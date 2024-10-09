@@ -1,6 +1,51 @@
 package batallanavaljava;
 import java.util.Scanner;
 
+public class Juego {
+    
+    public static void mensajeBienvenida() {
+        Scanner sc = new Scanner(System.in);
+        String nombreJugador;
+        String confirmacion;
+        final int MIN_LONGITUD = 3;
+        String tecla;
+        
+        System.out.println("\n\n\n\n\n");
+        System.out.println("                                                                              ??? Bienvenido Soldado !!!");
+        System.out.println("                                                                   ¿Estás listo y preparado para esta Gran Aventura?");
+        System.out.println("                                                                                 ¡Preséntate Soldado!");
+        System.out.println();
+        
+        do {
+            System.out.println("                                                                       Escribe tu nombre (mínimo " + MIN_LONGITUD + " caracteres):");
+            nombreJugador = sc.nextLine();
+            
+            if (nombreJugador.length() < MIN_LONGITUD) {
+                System.out.println("El nombre debe tener al menos " + MIN_LONGITUD + " caracteres. Inténtalo de nuevo.");
+            } else {
+                // Confirmar el nombre ingresado
+                System.out.println("¿Es correcto el nombre " + nombreJugador + "? (S/N):");
+                confirmacion = sc.nextLine().toUpperCase();
+            }
+            
+        } while (nombreJugador.length() < MIN_LONGITUD || !"S".equals(confirmacion));
+        
+        System.out.println("Nombre confirmado: " + nombreJugador);
+        System.out.println();
+        System.out.println("                                                             ¡Perfecto soldado " + nombreJugador + " ??? Que comience la Batalla !!!");
+        System.out.println();
+        System.out.println("                                                                           Presiona Enter para continuar...");
+        tecla = sc.nextLine();
+        
+        System.out.println("\n\n\n\n");
+    }
+    
+    public static void main(String[] args) {
+        mensajeBienvenida();
+    }
+}
+
+
 public class BatallaNavalJava {
     private static final int TAMANO_MATRIZ = 11;
     private static final String COLUMNAS_LETRAS = " ABCDEFGHIJ";
