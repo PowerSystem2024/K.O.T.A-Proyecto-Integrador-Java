@@ -11,7 +11,7 @@ public class Juego {
         String tecla;
         
         System.out.println("\n\n\n\n\n");
-        System.out.println("                                                                              ??? Bienvenido Soldado !!!");
+        System.out.println("                                                                              ¡¡¡ Bienvenido Soldado !!!");
         System.out.println("                                                                   ¿Estás listo y preparado para esta Gran Aventura?");
         System.out.println("                                                                                 ¡Preséntate Soldado!");
         System.out.println();
