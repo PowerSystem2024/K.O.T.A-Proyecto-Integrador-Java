@@ -1,52 +1,9 @@
 package batallanavaljava;
+
 import java.util.Scanner;
 
-public class Juego {
-    
-    public static void mensajeBienvenida() {
-        Scanner sc = new Scanner(System.in);
-        String nombreJugador;
-        String confirmacion;
-        final int MIN_LONGITUD = 3;
-        String tecla;
-        
-        System.out.println("\n\n\n\n\n");
-        System.out.println("                                                                              ¡¡¡ Bienvenido Soldado !!!");
-        System.out.println("                                                                   ¿Estás listo y preparado para esta Gran Aventura?");
-        System.out.println("                                                                                 ¡Preséntate Soldado!");
-        System.out.println();
-        
-        do {
-            System.out.println("                                                                       Escribe tu nombre (mínimo " + MIN_LONGITUD + " caracteres):");
-            nombreJugador = sc.nextLine();
-            
-            if (nombreJugador.length() < MIN_LONGITUD) {
-                System.out.println("El nombre debe tener al menos " + MIN_LONGITUD + " caracteres. Inténtalo de nuevo.");
-            } else {
-                // Confirmar el nombre ingresado
-                System.out.println("¿Es correcto el nombre " + nombreJugador + "? (S/N):");
-                confirmacion = sc.nextLine().toUpperCase();
-            }
-            
-        } while (nombreJugador.length() < MIN_LONGITUD || !"S".equals(confirmacion));
-        
-        System.out.println("Nombre confirmado: " + nombreJugador);
-        System.out.println();
-        System.out.println("                                                             ¡Perfecto soldado " + nombreJugador + " ??? Que comience la Batalla !!!");
-        System.out.println();
-        System.out.println("                                                                           Presiona Enter para continuar...");
-        tecla = sc.nextLine();
-        
-        System.out.println("\n\n\n\n");
-    }
-    
-    public static void main(String[] args) {
-        mensajeBienvenida();
-    }
-}
-
-
 public class BatallaNavalJava {
+
     private static final int TAMANO_MATRIZ = 11;
     private static final String COLUMNAS_LETRAS = " ABCDEFGHIJ";
     private static final String FILAS_NUMEROS = " 1234567890";
@@ -55,14 +12,11 @@ public class BatallaNavalJava {
         // Your code logic here
         System.out.println("Bienvenido a Batalla Naval!");
         String nombreJugador = "Pacnhito";
-        
-        batallaNavalLoop(nombreJugador);  
-        
-        
-        
+
+        batallaNavalLoop(nombreJugador);
+
     }
 
-    
     public static void batallaNavalLoop(String nombreJugador) {
         int[][] matrizJugador = new int[TAMANO_MATRIZ][TAMANO_MATRIZ];
         int[][] matrizEnemigo = new int[TAMANO_MATRIZ][TAMANO_MATRIZ];
@@ -119,88 +73,140 @@ public class BatallaNavalJava {
     }
 
     // Métodos adicionales como mostrarTableroJugador, ingresarPosicionBarcoJugador, etc.
-    
     public static void mostrarTableroJugador(int[][] matrizJugador) {
-    System.out.println("Este es tu tablero, piensa en donde ubicar tus barcos");
-    for (int i = 0; i < 10; i++) {
-        System.out.print(COLUMNAS_LETRAS.charAt(i) + " ");
-        for (int j = 0; j < 10; j++) {
-            System.out.print(matrizJugador[i][j] == 0 ? "~" : "X");
-            System.out.print(" ");
-        }
-        System.out.println();
-    }
-    System.out.println("Presiona Enter para continuar...");
-    new Scanner(System.in).nextLine(); // Esperar a que el jugador presione Enter
-}
-
-public static void ingresarPosicionBarcoJugador(int[][] matriz, Scanner scanner) {
-    int[] barco = {0, 4, 4, 4, 2}; // Tamaños de los barcos
-    String[] nombreDeBarco = {"", "portaviones", "crucero", "submarino", "lancha"};
-    
-    for (int tipo = 1; tipo < barco.length; tipo++) {
-        boolean posicionValida = false;
-
-        while (!posicionValida) {
-            System.out.printf("Coloque el %s en el tablero, con tamaño %d.\n", nombreDeBarco[tipo], barco[tipo]);
-            mostrarTableroJugador(matriz);
-            
-            // Obtener columna
-            int columna = 0;
-            while (columna < 1 || columna > 10) {
-                System.out.print("Elija en qué columna quiere colocar su barco (1-10): ");
-                columna = scanner.nextInt();
+        System.out.println("Este es tu tablero, piensa en donde ubicar tus barcos");
+        for (int i = 0; i < 10; i++) {
+            System.out.print(COLUMNAS_LETRAS.charAt(i) + " ");
+            for (int j = 0; j < 10; j++) {
+                System.out.print(matrizJugador[i][j] == 0 ? "~" : "X");
+                System.out.print(" ");
             }
+            System.out.println();
+        }
+        System.out.println("Presiona Enter para continuar...");
+        new Scanner(System.in).nextLine(); // Esperar a que el jugador presione Enter
+    }
 
-            // Obtener fila
-            char filaChar;
-            System.out.print("Elija en qué fila quiere colocar su barco (A-J): ");
-            filaChar = scanner.next().toUpperCase().charAt(0);
-            int fila = filaChar - 'A' + 1;
+    public static void ingresarPosicionBarcoJugador(int[][] matriz) {
+        int columna = 12, fila = 12;
+        boolean posicionOcupada, encontrado;
+        int[] barco = {0, 4, 4, 4, 2};  // Tamaño de los barcos
+        int[] formatos = {0, 9, 8, 7, 6}; // Formatos de los barcos
+        String[] nombreDeBarco = {"", "portaviones", "crucero", "submarino", "lancha"};
 
-            // Verificar si la posición es válida y colocar el barco
-            if ((columna + barco[tipo]) <= 10 && matriz[fila][columna] == 0) {
-                for (int h = 0; h < barco[tipo]; h++) {
-                    matriz[fila][columna + h] = tipo + 5; // Usar formato diferente para barcos
+        // Colocar los barcos
+        for (int tipo = 1; tipo <= 4; tipo++) {
+            boolean esPosicionValida = false;
+            while (!esPosicionValida) {
+                System.out.print("Coloque el " + nombreDeBarco[tipo] + " en el tablero, con tamaño " + barco[tipo] + ".");
+
+                // Solicitar columna al usuario
+                columna = solicitarColumna();
+
+                // Solicitar fila al usuario
+                fila = solicitarFila();
+
+                // Verificar si el barco cabe en la posición
+                if ((columna + barco[tipo]) > 10) {
+                    System.out.println("El " + nombreDeBarco[tipo] + " se ubicaría fuera del tablero, elija otra ubicación.");
+                    System.out.println();
+                } else {
+                    // Verificar si hay un barco en esa posición
+                    posicionOcupada = false;
+                    for (int i = 0; i < barco[tipo]; i++) {
+                        if (matriz[fila][columna + i] != 0) {
+                            posicionOcupada = true;
+                            break;
+                        }
+                    }
+                    if (posicionOcupada) {
+                        System.out.println("Ya hay un barco en esta posición, elija otra.");
+                        System.out.println();
+                    } else {
+                        esPosicionValida = true;
+                    }
                 }
-                posicionValida = true;
-                mostrarTableroJugador(matriz);
-            } else {
-                System.out.println("Posición no válida. Intente de nuevo.");
             }
+
+            // Colocar el barco en la matriz
+            for (int i = 0; i < barco[tipo]; i++) {
+                matriz[fila][columna + i] = formatos[tipo];
+            }
+
+            System.out.println("El barco ha sido colocado en la posición (" + columna + "," + COLUMNAS.charAt(fila) + ").");
+            mostrarTableroJugador(matriz);
+            System.out.println();
         }
     }
-}
-    
-public static void ataqueDelJugador(int[][] matrizEnemigo, int[] contadorBarcosEnemigo, Scanner scanner) {
-    System.out.println("Ingresa la coordenada para atacar al enemigo");
-    
-    int columna = 0, fila = 0;
-    while (columna < 1 || columna > 10) {
-        System.out.print("Elija en qué columna quiere disparar (1-10): ");
-        columna = scanner.nextInt();
-    }
-    
-    char filaChar;
-    System.out.print("Elija en qué fila quiere disparar (A-J): ");
-    filaChar = scanner.next().toUpperCase().charAt(0);
-    fila = filaChar - 'A' + 1;
 
-    // Verificar coordenadas
-    switch (matrizEnemigo[fila][columna]) {
-        case 0:
-            System.out.println("Le has dado al agua.");
-            matrizEnemigo[fila][columna] = -1; // Representar agua
-            break;
-        case 6:
-            System.out.println("Genial, le diste a la lancha del enemigo.");
-            matrizEnemigo[fila][columna] = -6; // Lancha dañada
-            contadorBarcosEnemigo[4]--;
-            break;
-        // Agregar casos para otros barcos
-        default:
-            System.out.println("Ya has atacado aquí, turno del enemigo.");
-            break;
+    public static int solicitarColumna() {
+        String dato;
+        boolean encontrado;
+        int columna = -1;
+
+        do {
+            mostrarTableroJugador(new int[10][10]);  // Asume que la matriz se pasa para ser mostrada
+            System.out.print("Elija en qué columna quiere colocar su barco (1-10): ");
+            dato = sc.next();
+
+            encontrado = false;
+            for (int i = 1; i <= 10; i++) {
+                if (String.valueOf(i).equals(dato)) {
+                    encontrado = true;
+                    columna = i;
+                    break;
+                }
+            }
+
+            if (!encontrado) {
+                System.out.println("El valor dado está fuera del rango.");
+            }
+        } while (!encontrado);
+
+        return columna;
+    }
+
+    public static int solicitarFila() {
+        String dato;
+        boolean encontrado;
+        int fila = -1;
+
+        do {
+            System.out.print("Elija en qué fila quiere colocar su barco (A-J): ");
+            dato = sc.next().toUpperCase();
+
+            encontrado = false;
+            for (int i = 1; i <= 10; i++) {
+                if (String.valueOf(COLUMNAS.charAt(i)).equals(dato)) {
+                    encontrado = true;
+                    fila = i;
+                    break;
+                }
+            }
+
+            if (!encontrado) {
+                System.out.println("El valor dado está fuera del rango.");
+            }
+        } while (!encontrado);
+
+        return fila;
+    }
+
+    public static void mostrarTableroJugador(int[][] matriz) {
+        // Implementa aquí la lógica para mostrar el tablero
+        // Ejemplo básico:
+        System.out.println("Tablero del jugador:");
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[i].length; j++) {
+                System.out.print(matriz[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    public static void main(String[] args) {
+        int[][] matrizJugador = new int[10][10];
+        ingresarPosicionBarcoJugador(matrizJugador);
     }
 }
 
@@ -312,3 +318,23 @@ public static void creditos() {
 
 }
 
+public class Juego {
+    public static void finDelJuego(String nombre_jugador) {
+        Scanner entrada = new Scanner(System.in);
+        String tecla;
+        
+        //Mostar mensaje de agradecimiento al usuario
+        System.out.println();
+        System.out.println("¡Gracias por jugar, "+ nombre_jugador +"!Esperamos que hayas disfrutado del juego.");
+        System.out.println("Recuerda: Si lo puedes imaginar, lo puedes programar.");
+        System.out.println("Ariel Betancud");
+        System.out.println();
+        System.out.println("Presiona enter para continuar...");
+        tecla = entrada.nextLine(); //Leer la tecla enter para continuar
+        
+        // Simular borrar pantalla (puedes cambiar esta parte si deseas)
+        for (int i = 0; i < 50; i++) {
+            System.out.println();
+        }
+    }
+}
