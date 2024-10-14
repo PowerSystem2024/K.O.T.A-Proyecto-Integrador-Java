@@ -5,7 +5,10 @@ public class BatallaNavalJava {
     private static final int TAMANO_MATRIZ = 11;
     private static final String COLUMNAS_LETRAS = " ABCDEFGHIJ";
     private static final String FILAS_NUMEROS = " 1234567890";
-
+    //private static final String[] FILAS_NUMEROS = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
+    public static boolean esJugador;
+    
+    
     public static void main(String[] args) {
         // Your code logic here
         System.out.println("Bienvenido a Batalla Naval!");
@@ -76,19 +79,75 @@ public class BatallaNavalJava {
     // Métodos adicionales como mostrarTableroJugador, ingresarPosicionBarcoJugador, etc.
     
     public static void mostrarTableroJugador(int[][] matrizJugador) {
-    System.out.println("Este es tu tablero, piensa en donde ubicar tus barcos");
+    System.out.println("Este es tu tablero, piensa en donde ubicar tus barcos :");
+    System.out.println();
     for (int i = 0; i < 10; i++) {
+        esJugador = true;
+         /*
         System.out.print(COLUMNAS_LETRAS.charAt(i) + " ");
         for (int j = 0; j < 10; j++) {
             System.out.print(matrizJugador[i][j] == 0 ? "~" : "X");
             System.out.print(" ");
         }
         System.out.println();
+*/
+        mostrarValor(matrizJugador, i, esJugador);
+        System.out.print("\n\n"); //separacion entre filas
     }
+    System.out.println();
     System.out.println("Presiona Enter para continuar...");
+
     new Scanner(System.in).nextLine(); // Esperar a que el jugador presione Enter
 }
+        public static void mostrarValor(int[][] matriz, int i, boolean esJugador) {
+        System.out.print("             "); // Centramos la matriz margen de izquierda a derecha
+        System.out.print(COLUMNAS_LETRAS.charAt(i) + "     "); // Separación de la matriz de la primera columna
 
+        for (int j = 0; j <= 9; j++) {
+            if (i == 0) { // Si true muestro los números
+                System.out.print(j + 1 + "     "); // Separación entre los números
+            } else {
+                //	System.out.print(matriz[i,j+1]); // MODO DEBUG 
+                //	System.out.print("     "); // MODO DEBUG
+                if (esJugador) {
+                    if (matriz[i][j + 1] == -1) {
+                        System.out.print("A"); // 
+                    } else if (matriz[i][j + 1] == 0) {
+                        System.out.print("~"); // 
+                    } else if (matriz[i][j + 1] < -1) {
+                        System.out.print("*"); // 
+                    } else if (matriz[i][j + 1] == 6) {
+                        System.out.print("L"); // 
+                    } else if (matriz[i][j + 1] == 7) {
+                        System.out.print("S"); // 
+                    } else if (matriz[i][j + 1] == 8) {
+                        System.out.print("C"); // 
+                    } else if (matriz[i][j + 1] == 9) {
+                        System.out.print("P"); // 
+                    }
+                } else {
+                //	System.out.print(matriz[i,j+1]); // MODO DEBUG 
+                //	System.out.print("     "); // MODO DEBUG
+                    if (matriz[i][j + 1] == -1) {
+                        System.out.print("A"); // 
+                    } else if (matriz[i][j + 1] >= 0) {
+                        System.out.print("~"); // 
+                    } else if (matriz[i][j + 1] == -6) {
+                        System.out.print("L"); // 
+                    } else if (matriz[i][j + 1] == -7) {
+                        System.out.print("S"); // 
+                    } else if (matriz[i][j + 1] == -8) {
+                        System.out.print("C"); // 
+                    } else if (matriz[i][j + 1] == -9) {
+                        System.out.print("P"); // 
+                    }
+                }
+                System.out.print("     "); // Separación
+            }
+        }
+    }
+
+        
 public static void ingresarPosicionBarcoJugador(int[][] matriz, Scanner scanner) {
     int[] barco = {0, 4, 4, 4, 2}; // Tamaños de los barcos
     String[] nombreDeBarco = {"", "portaviones", "crucero", "submarino", "lancha"};
