@@ -1,7 +1,9 @@
 package batallanavaljava;
+
 import java.util.Scanner;
 
 public class BatallaNavalJava {
+
     private static final int TAMANO_MATRIZ = 11;
     private static final String COLUMNAS_LETRAS = " ABCDEFGHIJ";
     private static final String FILAS_NUMEROS = " 1234567890";
@@ -10,14 +12,11 @@ public class BatallaNavalJava {
         // Your code logic here
         System.out.println("Bienvenido a Batalla Naval!");
         String nombreJugador = "Pacnhito";
-        
-        batallaNavalLoop(nombreJugador);  
-        
-        
-        
+
+        batallaNavalLoop(nombreJugador);
+
     }
 
-    
     public static void batallaNavalLoop(String nombreJugador) {
         int[][] matrizJugador = new int[TAMANO_MATRIZ][TAMANO_MATRIZ];
         int[][] matrizEnemigo = new int[TAMANO_MATRIZ][TAMANO_MATRIZ];
@@ -74,20 +73,19 @@ public class BatallaNavalJava {
     }
 
     // Métodos adicionales como mostrarTableroJugador, ingresarPosicionBarcoJugador, etc.
-    
     public static void mostrarTableroJugador(int[][] matrizJugador) {
-    System.out.println("Este es tu tablero, piensa en donde ubicar tus barcos");
-    for (int i = 0; i < 10; i++) {
-        System.out.print(COLUMNAS_LETRAS.charAt(i) + " ");
-        for (int j = 0; j < 10; j++) {
-            System.out.print(matrizJugador[i][j] == 0 ? "~" : "X");
-            System.out.print(" ");
+        System.out.println("Este es tu tablero, piensa en donde ubicar tus barcos");
+        for (int i = 0; i < 10; i++) {
+            System.out.print(COLUMNAS_LETRAS.charAt(i) + " ");
+            for (int j = 0; j < 10; j++) {
+                System.out.print(matrizJugador[i][j] == 0 ? "~" : "X");
+                System.out.print(" ");
+            }
+            System.out.println();
         }
-        System.out.println();
+        System.out.println("Presiona Enter para continuar...");
+        new Scanner(System.in).nextLine(); // Esperar a que el jugador presione Enter
     }
-    System.out.println("Presiona Enter para continuar...");
-    new Scanner(System.in).nextLine(); // Esperar a que el jugador presione Enter
-}
 
     public static void ingresarPosicionBarcoJugador(int[][] matriz) {
         int columna = 12, fila = 12;
@@ -95,13 +93,13 @@ public class BatallaNavalJava {
         int[] barco = {0, 4, 4, 4, 2};  // Tamaño de los barcos
         int[] formatos = {0, 9, 8, 7, 6}; // Formatos de los barcos
         String[] nombreDeBarco = {"", "portaviones", "crucero", "submarino", "lancha"};
-        
+
         // Colocar los barcos
         for (int tipo = 1; tipo <= 4; tipo++) {
             boolean esPosicionValida = false;
             while (!esPosicionValida) {
                 System.out.print("Coloque el " + nombreDeBarco[tipo] + " en el tablero, con tamaño " + barco[tipo] + ".");
-                
+
                 // Solicitar columna al usuario
                 columna = solicitarColumna();
 
@@ -320,3 +318,23 @@ public static void creditos() {
 
 }
 
+public class Juego {
+    public static void finDelJuego(String nombre_jugador) {
+        Scanner entrada = new Scanner(System.in);
+        String tecla;
+        
+        //Mostar mensaje de agradecimiento al usuario
+        System.out.println();
+        System.out.println("¡Gracias por jugar, "+ nombre_jugador +"!Esperamos que hayas disfrutado del juego.");
+        System.out.println("Recuerda: Si lo puedes imaginar, lo puedes programar.");
+        System.out.println("Ariel Betancud");
+        System.out.println();
+        System.out.println("Presiona enter para continuar...");
+        tecla = entrada.nextLine(); //Leer la tecla enter para continuar
+        
+        // Simular borrar pantalla (puedes cambiar esta parte si deseas)
+        for (int i = 0; i < 50; i++) {
+            System.out.println();
+        }
+    }
+}
