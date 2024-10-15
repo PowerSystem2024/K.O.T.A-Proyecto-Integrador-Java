@@ -14,13 +14,11 @@ import static batallanavaljava.Creditos.creditos;
 import static batallanavaljava.FinDelJuego.finDelJuego;
 import static batallanavaljava.IngresarPosicionBarcoJugador.ingresarPosicionBarcoJugador;
 import static batallanavaljava.MostrarTableroJugador.mostrarTableroJugador;
+ import static batallanavaljava.MostrarTableroJugadorEnemigo.mostrarTableroJugadorEnemigo; // solo para testear desp borrar
 
 import java.util.Scanner;
 
-/**
- *
- * @author Mkjdf983
- */
+
 public class BatallaNavalLoop {
     
         public static void batallaNavalLoop(String nombreJugador) {
@@ -35,17 +33,18 @@ public class BatallaNavalLoop {
         for (int i = 0; i < TAMANO_MATRIZ; i++) {
             for (int j = 0; j < TAMANO_MATRIZ; j++) {
                 matrizJugador[i][j] = 0;
+               // matrizEnemigo[i][j] = 0; // solo para testear desp borrar esto se maneja en colocal barcos enemigos
             }
         }
 
-        mostrarTableroJugador(matrizJugador);
+        mostrarTableroJugadorEnemigo(matrizJugador,matrizEnemigo);
         Scanner scanner = new Scanner(System.in);
         ingresarPosicionBarcoJugador(matrizJugador, scanner);
         colocarBarcosEnemigo(matrizEnemigo);
         System.out.println("\n");
 
         while (!ganar && !perder) {
-            mostrarTableroJugadorEnemigo(matrizJugador, matrizEnemigo);
+            mostrarTableroJugador(matrizJugador);
             ataqueDelJugador(matrizEnemigo, contadorBarcosEnemigo, scanner);
             ataqueDelEnemigo(matrizJugador, contadorBarcosJugador);
 
@@ -78,7 +77,4 @@ public class BatallaNavalLoop {
         creditos();
     }
 
-    private static void mostrarTableroJugadorEnemigo(int[][] matrizJugador, int[][] matrizEnemigo) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }
