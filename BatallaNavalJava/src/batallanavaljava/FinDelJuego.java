@@ -12,7 +12,7 @@ public class FinDelJuego {
             System.out.println();
             System.out.println("¡Gracias por jugar, " + nombreJugador + "! Esperamos que hayas disfrutado del juego.");
             System.out.println("Recuerda: Si lo puedes imaginar, lo puedes programar.");
-            System.out.println("Ariel Bentancud");
+            System.out.println("Ariel Betancud");
             System.out.println();
             System.out.println("Presiona enter para continuar...");
             // Esperar que el usuario presione enter para continuar
