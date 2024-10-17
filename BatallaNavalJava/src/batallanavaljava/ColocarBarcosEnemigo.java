@@ -4,6 +4,9 @@
  */
 package batallanavaljava;
 
+import static java.lang.Byte.SIZE;
+import static java.lang.Math.random;
+import static java.lang.StrictMath.random;
 import java.util.Scanner;
 
 /**
