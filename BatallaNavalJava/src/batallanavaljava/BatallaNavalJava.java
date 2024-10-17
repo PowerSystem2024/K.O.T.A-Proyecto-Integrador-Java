@@ -1,5 +1,5 @@
 package batallanavaljava;
-import java.util.Scanner;
+
 
 public class BatallaNavalJava {
     public static final int TAMANO_MATRIZ = 11;
