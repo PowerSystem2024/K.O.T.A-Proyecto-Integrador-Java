@@ -8,7 +8,7 @@ package BatallaNaval;
  *
  * @author Mkjdf983
  */
-public class Marina {
+public class Marina {//renombrar a board
     private Cell[][] cellMatrix;
 
     public Marina(int rows, int columns) {
@@ -28,7 +28,7 @@ public class Marina {
         
         // Check if the space is available
         for (int i = 0; i < spacesNeeded; i++) {
-            if (column + i >= cellMatrix[0].length || cellMatrix[row][column + i] instanceof Cell) {
+            if (column + i >= cellMatrix[0].length ) {//|| cellMatrix[row][column + i] instanceof Cell
                 System.out.println("Not enough space for " + boat.getDescription());
                 return false; // Not enough space
             }
@@ -51,7 +51,7 @@ public class Marina {
     public void displayCells() {
         for (int i = 0; i < cellMatrix.length; i++) {
             for (int j = 0; j < cellMatrix[i].length; j++) {
-                System.out.print(cellMatrix[i][j].getDescription() + " ");
+                System.out.print(cellMatrix[i][j].getCharacter()+ " ");
             }
             System.out.println();
         }

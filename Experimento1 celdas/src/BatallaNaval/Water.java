@@ -18,6 +18,11 @@ public class Water extends Cell {
     public int getSpaceRequired() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+    @Override
+    public char getCharacter() {
+        return '~';
+    }
     
 
 }
