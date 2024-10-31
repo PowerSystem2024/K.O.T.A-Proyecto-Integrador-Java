@@ -21,7 +21,7 @@ public class Water extends Cell {
 
     @Override
     public char getCharacter() {
-        return '~';
+        return '~'; // agregar una constante
     }
     
 
