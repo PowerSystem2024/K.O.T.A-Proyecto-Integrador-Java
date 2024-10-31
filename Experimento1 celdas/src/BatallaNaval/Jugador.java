@@ -10,7 +10,11 @@ public class Jugador {
         this.marina = marina;
         this.scanner = new Scanner(System.in);
     }
-
+    
+    public Jugador(Marina marina) {
+        this.marina = marina;
+        this.scanner = new Scanner(System.in);
+    }
     public void colocarBarcos() {
         // Puedes agregar un arreglo de barcos aquí si lo deseas
         Boat[] barcos = {
