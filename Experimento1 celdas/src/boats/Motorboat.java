@@ -1,28 +1,27 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package boats;
 
+import BatallaNaval.Cell;
 
+// La clase Motorboat extiende la clase Boat
 public class Motorboat extends Boat {
+
+    // Constructor de la clase Motorboat
     public Motorboat(String name, int length) {
-        super(name, length); // Call the constructor of the parent class
+        super(name, length); // Llama al constructor de la clase padre (Boat)
     }
 
     @Override
     public void sail() {
-        System.out.println(getName() + " is cruising with the engine!");
+        System.out.println(getName() + " is speeding through the water!"); // Mensaje cuando el motorboat navega
     }
 
     @Override
     public int getSpaceRequired() {
-        return 3; // Motorboat occupies 3 spaces
+        return 1; // Motorboat ocupa 1 espacio
     }
 
     @Override
     public char getCharacter() {
-        return 'L';
+        return 'M'; // Caracter que representará el motorboat
     }
-
 }
