@@ -1,5 +1,5 @@
 
-package BatallaNaval;
+package utils;
 
 
 public class Timer {
