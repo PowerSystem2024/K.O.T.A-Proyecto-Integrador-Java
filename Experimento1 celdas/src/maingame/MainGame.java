@@ -1,19 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package maingame;
 
-/**
- *
- * @author Mkjdf983
- */
+import utils.StartAnimation;
+
 public class MainGame {
     public static void main(String[] args) {
-            //poner menu
-            // class animacion
-            // menu 1- jugar 2 reglas 3 creditos 4 salir 5 leaderboard
+        try {
+            // Mostrar la animación al inicio del juego
+            StartAnimation animacion = new StartAnimation();
+            animacion.mostrar();  // Llamar al método que muestra la animación
 
+            // Continuar con el flujo del juego
+            utils.Menu menu = new utils.Menu();
+            menu.showMenu();  // Mostrar el menú
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
-
 }
