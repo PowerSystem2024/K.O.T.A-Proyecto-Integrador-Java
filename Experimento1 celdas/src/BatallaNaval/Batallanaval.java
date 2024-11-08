@@ -4,7 +4,7 @@ import boats.Boat;
 import boats.AircraftCarrier;
 import boats.Destroyer;
 import boats.Submarine;
-import boats.Cruiser;
+import boats.Cruise;
 import boats.Motorboat;
 import java.util.Scanner;
 
@@ -18,9 +18,9 @@ public class BatallaNaval {
         
         // Crear instancias de los barcos
         Boat aircraftCarrier = new AircraftCarrier("Aircraft Carrier", 5);
-        Boat destroyer = new Destroyer("Destroyer", 4);
+        Boat destroyer = new Destroyer("Destroyer",4);
         Boat submarine = new Submarine("Submarine", 3);
-        Boat cruiser = new Cruiser("Cruiser", 2);
+        Boat cruiser = new Cruise("Cruiser", 2);
         Boat motorboat1 = new Motorboat("Speedster", 1);
 
         // Agregar barcos a la marina
@@ -55,7 +55,9 @@ public class BatallaNaval {
         }
 
         // Mostrar la matriz de la marina
-        board.displayCells();
+//        board.displayCells(true);
+//        board.displayCells(false);
+        board.displayBothBoards(board, board);
 
         // Test para ver el tiempo después de presionar Enter
         System.out.println("Game finished. Press Enter to see the elapsed time...");
