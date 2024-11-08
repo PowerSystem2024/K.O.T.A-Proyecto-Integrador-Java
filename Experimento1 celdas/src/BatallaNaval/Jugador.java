@@ -1,20 +1,17 @@
 package BatallaNaval;
 
+import boats.*;
 import java.util.Scanner;
 
 public class Jugador {
-    private Marina marina;
+    private Board board;
     private Scanner scanner;
 
-    public Jugador(Marina marina) {
-        this.marina = marina;
+    public Jugador(Board board) {
+        this.board = board;
         this.scanner = new Scanner(System.in);
     }
     
-    public Jugador(Marina marina) {
-        this.marina = marina;
-        this.scanner = new Scanner(System.in);
-    }
     public void colocarBarcos() {
         // Puedes agregar un arreglo de barcos aquí si lo deseas
         Boat[] barcos = {
@@ -28,13 +25,14 @@ public class Jugador {
         for (Boat barco : barcos) {
             boolean colocado = false;
             while (!colocado) {
+                board.addBoat(0, 0, barco);
                 System.out.println("Coloca tu barco: " + barco.getDescription());
-                System.out.print("Ingresa la fila (0-" + (marina.getRowCount() - 1) + "): ");
+                System.out.print("Ingresa la fila (0-" + (board.getRowCount() - 1) + "): ");
                 int fila = scanner.nextInt();
-                System.out.print("Ingresa la columna (0-" + (marina.getColumnCount() - 1) + "): ");
+                System.out.print("Ingresa la columna (0-" + (board.getColumnCount() - 1) + "): ");
                 int columna = scanner.nextInt();
 
-                colocado = marina.addBoat(fila, columna, barco);
+                colocado = board.addBoat(fila, columna, barco);
                 if (!colocado) {
                     System.out.println("No se pudo colocar el barco. Intenta de nuevo.");
                 } else {

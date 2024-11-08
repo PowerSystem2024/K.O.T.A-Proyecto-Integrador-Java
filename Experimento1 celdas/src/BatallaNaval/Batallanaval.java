@@ -1,5 +1,6 @@
 package BatallaNaval;
 
+import utils.Timer;
 import boats.Boat;
 import boats.AircraftCarrier;
 import boats.Destroyer;
@@ -15,7 +16,7 @@ public class BatallaNaval {
         timer.start(); // Iniciar el temporizador
 
         Board board = new Board(10, 10); // Tamaño de la matriz
-        
+        Jugador player = new Jugador(board);
         // Crear instancias de los barcos
         Boat aircraftCarrier = new AircraftCarrier("Aircraft Carrier", 5);
         Boat destroyer = new Destroyer("Destroyer",4);
