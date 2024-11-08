@@ -25,6 +25,7 @@ public abstract class Boat extends Cell {
     @Override
     public abstract int getSpaceRequired(); // Método abstracto para requerimiento de espacio
 
+
     @Override
     public abstract char getCharacter(); // Método abstracto para el carácter que representa al barco
 
