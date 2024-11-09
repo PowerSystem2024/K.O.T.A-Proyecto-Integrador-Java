@@ -6,6 +6,7 @@ import test.TestBatallaNaval;
 public class Menu {
 
     public void showMenu() {
+        System.out.println("Iniciando el menú"); // Mensaje de depuración
         Scanner scanner = new Scanner(System.in);
         int opcion = 0;
 
@@ -30,8 +31,9 @@ public class Menu {
                         showCredits(); // Mostrar los créditos
                         break;
                     case 4:
-                        System.out.println("Exiting the game. See you soon!");
+                        System.out.println("Thank you for playing Battleship! We hope you enjoyed the adventure. See you next time!");
                         break;
+
                     default:
                         System.out.println("Invalid option. Please try again.");
                 }
