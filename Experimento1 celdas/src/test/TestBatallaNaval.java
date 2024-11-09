@@ -112,7 +112,7 @@ public static void playerAttack(Board enemyBoard) {
     char rowChar = input.charAt(0); // The first character should be a letter
     String columnStr = input.substring(1); // The remaining characters should represent the row number
 
-    // Validate that the column is within the range 'A' to 'J'
+    // Validate that the row is within the range 'A' to 'J'
     if (rowChar < 'A' || rowChar > 'J') {
         System.out.println("Invalid row. Please enter a letter between A and J.");
         return;
@@ -128,7 +128,7 @@ public static void playerAttack(Board enemyBoard) {
 
     // Ensure the column is within the board limits (1-10 becomes index 0-9)
     if (column < 0 || column >= enemyBoard.getColumnCount()) {
-        System.out.println("Row out of range. Please enter a number between 1 and 10.");
+        System.out.println("Column out of range. Please enter a number between 1 and 10.");
         return;
     }
 
@@ -142,7 +142,12 @@ public static void playerAttack(Board enemyBoard) {
     targetCell.setHit(true); // Marcar la celda como disparada
 
     if (targetCell instanceof Boat) {
-        System.out.println("Hit! You hit the " + ((Boat) targetCell).getDescription());
+        Boat boat = (Boat) targetCell;
+        int sectionIndex = boat.getSectionIndex(row, column);  // Get the section index based on position
+        if (sectionIndex != -1) {
+            boat.hitSection(sectionIndex);  // Mark the specific section as hit
+            System.out.println("Hit! You hit the " + boat.getDescription());
+        }
     } else {
         System.out.println("Miss! The shot hit water.");
     }
@@ -156,13 +161,23 @@ public static void playerAttack(Board enemyBoard) {
         Random rand = new Random();
         int row, col;
         Cell targetCell;
+        boolean validTargetFound;
 
-        // Generar coordenadas aleatorias hasta encontrar una celda que no haya sido atacada
         do {
-            row = rand.nextInt(playerBoard.getRowCount());  // Fila aleatoria
-            col = rand.nextInt(playerBoard.getColumnCount());  // Columna aleatoria
-            targetCell = playerBoard.getCell(row, col);
-        } while (targetCell.isHit()); // Repetir hasta encontrar una celda que no haya sido atacada
+        // Generate random coordinates
+        row = rand.nextInt(playerBoard.getRowCount());
+        col = rand.nextInt(playerBoard.getColumnCount());
+        targetCell = playerBoard.getCell(row, col);
+        
+        // Check if the cell is water or an unhit section of a boat
+        if (targetCell instanceof Boat attackedBoat) {
+            int sectionIndex = attackedBoat.getSectionIndex(row, col);
+            validTargetFound = sectionIndex != -1 && !attackedBoat.getHitSection(sectionIndex); // Check if specific section isn't hit
+        } else {
+            validTargetFound = !targetCell.isHit(); // Water cell that hasn't been hit
+        }
+
+        } while (!validTargetFound); // Repeat until an unhit cell is found // Repetir hasta encontrar una celda que no haya sido atacada
 
         // Marcar la celda como disparada
         targetCell.setHit(true);
@@ -170,7 +185,11 @@ public static void playerAttack(Board enemyBoard) {
 
         // Determinar si el ataque fue exitoso o falló
         if (targetCell instanceof Boat attackedBoat) {
-            System.out.println("Enemy hit your " + attackedBoat.getDescription() + "!");
+            int sectionIndex = attackedBoat.getSectionIndex(row, col);
+            if (sectionIndex != -1) {
+                attackedBoat.hitSection(sectionIndex); // Mark this specific section as hit
+                System.out.println("Enemy hit your " + attackedBoat.getDescription() + "!");
+            }
         } else {
             System.out.println("Enemy missed!");
         }
@@ -182,7 +201,7 @@ public static void playerAttack(Board enemyBoard) {
         for (int i = 0; i < board.getRowCount(); i++) {
             for (int j = 0; j < board.getColumnCount(); j++) {
                 Cell cell = board.getCell(i, j);
-                if (cell instanceof Boat && !((Boat) cell).isSunk(board)) {
+                if (cell instanceof Boat && !((Boat) cell).isSunk()) {
                     return false;  // Si hay al menos un barco no hundido, el juego no ha terminado
                 }
             }
