@@ -3,23 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Mkjdf983/Documents/Tecnicatura/K.O.T.A-Proyecto-Integrador-Java/Experimento1%20celdas/src/BatallaNaval/Water.java</file>
-            <file>file:/C:/Users/Mkjdf983/Documents/Tecnicatura/K.O.T.A-Proyecto-Integrador-Java/Experimento1%20celdas/src/utils/StartAnimation.java</file>
             <file>file:/C:/Users/Mkjdf983/Documents/Tecnicatura/K.O.T.A-Proyecto-Integrador-Java/Experimento1%20celdas/src/boats/Cruise.java</file>
-            <file>file:/C:/Users/Mkjdf983/Documents/Tecnicatura/K.O.T.A-Proyecto-Integrador-Java/Experimento1%20celdas/src/score/Score.java</file>
+            <file>file:/C:/Users/Mkjdf983/Documents/Tecnicatura/K.O.T.A-Proyecto-Integrador-Java/Experimento1%20celdas/src/BatallaNaval/Jugador.java</file>
             <file>file:/C:/Users/Mkjdf983/Documents/Tecnicatura/K.O.T.A-Proyecto-Integrador-Java/Experimento1%20celdas/src/BatallaNaval/Board.java</file>
-            <file>file:/C:/Users/Mkjdf983/Documents/Tecnicatura/K.O.T.A-Proyecto-Integrador-Java/Experimento1%20celdas/src/BatallaNaval/Cell.java</file>
-            <file>file:/C:/Users/Mkjdf983/Documents/Tecnicatura/K.O.T.A-Proyecto-Integrador-Java/Experimento1%20celdas/src/BatallaNaval/BatallaNaval.java</file>
-            <file>file:/C:/Users/Mkjdf983/Documents/Tecnicatura/K.O.T.A-Proyecto-Integrador-Java/Experimento1%20celdas/src/test/TestBatallaNaval.java</file>
-            <file>file:/C:/Users/Mkjdf983/Documents/Tecnicatura/K.O.T.A-Proyecto-Integrador-Java/Experimento1%20celdas/src/boats/Motorboat.java</file>
-            <file>file:/C:/Users/Mkjdf983/Documents/Tecnicatura/K.O.T.A-Proyecto-Integrador-Java/Experimento1%20celdas/src/utils/Credits.java</file>
-            <file>file:/C:/Users/Mkjdf983/Documents/Tecnicatura/K.O.T.A-Proyecto-Integrador-Java/Experimento1%20celdas/src/boats/Destroyer.java</file>
-            <file>file:/C:/Users/Mkjdf983/Documents/Tecnicatura/K.O.T.A-Proyecto-Integrador-Java/Experimento1%20celdas/src/utils/GameRules.java</file>
-            <file>file:/C:/Users/Mkjdf983/Documents/Tecnicatura/K.O.T.A-Proyecto-Integrador-Java/Experimento1%20celdas/src/boats/Submarine.java</file>
-            <file>file:/C:/Users/Mkjdf983/Documents/Tecnicatura/K.O.T.A-Proyecto-Integrador-Java/Experimento1%20celdas/src/boats/AircraftCarrier.java</file>
-            <file>file:/C:/Users/Mkjdf983/Documents/Tecnicatura/K.O.T.A-Proyecto-Integrador-Java/Experimento1%20celdas/src/game/Game.java</file>
             <file>file:/C:/Users/Mkjdf983/Documents/Tecnicatura/K.O.T.A-Proyecto-Integrador-Java/Experimento1%20celdas/src/boats/Boat.java</file>
-            <file>file:/C:/Users/Mkjdf983/Documents/Tecnicatura/K.O.T.A-Proyecto-Integrador-Java/Experimento1%20celdas/src/maingame/MainGame.java</file>
+            <file>file:/C:/Users/Mkjdf983/Documents/Tecnicatura/K.O.T.A-Proyecto-Integrador-Java/Experimento1%20celdas/src/BatallaNaval/Cell.java</file>
+            <file>file:/C:/Users/Mkjdf983/Documents/Tecnicatura/K.O.T.A-Proyecto-Integrador-Java/Experimento1%20celdas/src/test/TestBatallaNaval.java</file>
         </group>
     </open-files>
 </project-private>
