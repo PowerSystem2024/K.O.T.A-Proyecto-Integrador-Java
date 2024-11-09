@@ -1,22 +1,18 @@
 package boats;
 
 public class Destroyer extends Boat {
-    public Destroyer(String name, int length) {
-        super(name, length);        
+    private static final String NAME = "Destroyer";
+    private static final int DESTROYER_LENGHT  = 4;
+    private static final char DESTROYER_CHAR  = 'D';
+    
+    
+    public Destroyer() {
+        super(NAME, DESTROYER_LENGHT, DESTROYER_CHAR);        
     }
 
     @Override
     public void sail() {
-        System.out.println(getName() + " is on patrol!");
+        System.out.println(this.getDescription()+ " is on patrol!");
     }
 
-    @Override
-    public int getSpaceRequired() {
-        return this.getLength(); // Destroyer ocupa 4 espacios
-    }
-
-    @Override
-    public char getCharacter() {
-        return 'D'; // Caracter que representará el barco
-    }
 }
