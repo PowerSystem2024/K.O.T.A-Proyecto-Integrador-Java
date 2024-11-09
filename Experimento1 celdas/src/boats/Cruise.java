@@ -1,23 +1,20 @@
 package boats;
 
 public class Cruise extends Boat {
-    public Cruise(String name, int length) {
-        super(name, length);  
+    
+    private static final String NAME = "Cruise";
+    private static final int CRUISE_LENGHT  = 2;
+    private static final char CRUISE_CHAR  = 'C';
+    
+    public Cruise() {
+        super(NAME, CRUISE_LENGHT,CRUISE_CHAR );  
         
     }
 
     @Override
     public void sail() {
-        System.out.println(getName() + " is cruising along the waves!");
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    @Override
-    public int getSpaceRequired() {
-        return 2; // Cruise ocupa 2 espacios
-    }
 
-    @Override
-    public char getCharacter() {
-        return 'C'; // Caracter que representará el barco
-    }
 }

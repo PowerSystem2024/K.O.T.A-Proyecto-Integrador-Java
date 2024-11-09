@@ -21,11 +21,11 @@ public class TestBatallaNaval {
         Jugador enemy = new Jugador(enemyBoard);
 
         // Create boats for the player
-        Boat aircraftCarrier = new AircraftCarrier("Aircraft Carrier", 5);
-        Boat destroyer = new Destroyer("Destroyer", 4);
-        Boat submarine = new Submarine("Submarine", 3);
-        Boat cruiser = new Cruise("Cruiser", 2);
-        Boat motorboat1 = new Motorboat("Speedster", 1);
+        Boat aircraftCarrier = new AircraftCarrier();
+        Boat destroyer = new Destroyer();
+        Boat submarine = new Submarine();
+        Boat cruiser = new Cruise();
+        Boat motorboat1 = new Motorboat();
 
         // Add boats to the player’s board
         placeBoats(playerBoard, aircraftCarrier, 0, 0);
@@ -35,21 +35,21 @@ public class TestBatallaNaval {
         placeBoats(playerBoard, motorboat1, 9, 9);
 
         // Create and place enemy boats (can be randomized)
-        Boat enemyAircraftCarrier = new AircraftCarrier("Enemy Aircraft Carrier", 5);
-        Boat enemyDestroyer = new Destroyer("Enemy Destroyer", 4);
-        Boat enemySubmarine = new Submarine("Enemy Submarine", 3);
-        Boat enemyCruiser = new Cruise("Enemy Cruiser", 2);
-        Boat enemyMotorboat = new Motorboat("Enemy Speedster", 1);
+        Boat enemyAircraftCarrier = new AircraftCarrier();
+        Boat enemyDestroyer = new Destroyer();
+        Boat enemySubmarine = new Submarine();
+        Boat enemyCruiser = new Cruise();
+        Boat enemyMotorboat = new Motorboat();
 
-        placeBoats(enemyBoard, enemyAircraftCarrier, 0, 0);
-        placeBoats(enemyBoard, enemyDestroyer, 5, 5);
-        placeBoats(enemyBoard, enemySubmarine, 2, 3);
+        placeBoats(enemyBoard, enemyAircraftCarrier, 1, 1);
+        placeBoats(enemyBoard, enemyDestroyer, 2, 2);
+        placeBoats(enemyBoard, enemySubmarine, 3, 3);
         placeBoats(enemyBoard, enemyCruiser, 7, 1);
-        placeBoats(enemyBoard, enemyMotorboat, 9, 9);
+        placeBoats(enemyBoard, enemyMotorboat, 0, 6);
 
         // Show both boards (optional, to visualize both)
         System.out.println("Player's board:");
-        playerBoard.displayCells();
+        //playerBoard.displayCells();
 //        System.out.println("Enemy's board:");
 //        enemyBoard.displayCells();
 
@@ -91,9 +91,9 @@ public class TestBatallaNaval {
     // Method to place boats on the board
     public static void placeBoats(Board board, Boat boat, int row, int col) {
         if (board.addBoat(row, col, boat)) {
-            System.out.println(boat.getName() + " added successfully.");
+            System.out.println(boat.getDescription() + " added successfully.");
         } else {
-            System.out.println("Failed to add " + boat.getName());
+            System.out.println("Failed to add " + boat.getDescription());
         }
     }
 
@@ -101,67 +101,92 @@ public static void playerAttack(Board enemyBoard) {
     Scanner scanner = new Scanner(System.in);
     System.out.println("Enter the coordinates of your attack (e.g., A1, B2):");
 
-    String input = scanner.nextLine().toUpperCase(); // Read the input and convert to uppercase for consistency
+    String input = scanner.nextLine().toUpperCase().trim(); // Read input and format it
 
-    // Validate input length and format (e.g., "A1", "B2", etc.)
+    // Check if input has at least two characters and no more than three
     if (input.length() < 2 || input.length() > 3) {
-        System.out.println("Invalid input. Please enter in the format <Letter><Number> (e.g., A1).");
-        return; // Exit the method if input is invalid
+        System.out.println("Invalid input format. Please enter a letter followed by a number (e.g., A1).");
+        return;
     }
 
-    char colChar = input.charAt(0); // The column character (A-J)
-    String rowStr = input.substring(1); // The row number (1-10)
+    char rowChar = input.charAt(0); // The first character should be a letter
+    String columnStr = input.substring(1); // The remaining characters should represent the row number
 
-    // Validate the row and column
-    if (colChar < 'A' || colChar > 'J' || Integer.parseInt(rowStr) < 1 || Integer.parseInt(rowStr) > 10) {
-        System.out.println("Invalid coordinates. Please enter valid row and column values.");
-        return; // Exit the method if coordinates are invalid
+    // Validate that the column is within the range 'A' to 'J'
+    if (rowChar < 'A' || rowChar > 'J') {
+        System.out.println("Invalid row. Please enter a letter between A and J.");
+        return;
     }
 
-    // Convert the column letter (A-J) to an index (0-9)
-    int column = colChar - 'A';
-    int row = Integer.parseInt(rowStr) - 1; // Convert the row number to zero-based index
+    int column;
+    try {
+        column = Integer.parseInt(columnStr) - 1; // Convert row to zero-based index
+    } catch (NumberFormatException e) {
+        System.out.println("Invalid column number. Please enter a number between 1 and 10.");
+        return;
+    }
+
+    // Ensure the column is within the board limits (1-10 becomes index 0-9)
+    if (column < 0 || column >= enemyBoard.getColumnCount()) {
+        System.out.println("Row out of range. Please enter a number between 1 and 10.");
+        return;
+    }
+
+    // Convert the row letter (A-J) to an index (0-9)
+    int row = rowChar - 'A';
 
     System.out.printf("Player attacks: Row %d, Column %d%n", row + 1, column + 1);
 
-    // Attack the enemy board at this position
+    // Proceed with the attack on the enemy board
     Cell targetCell = enemyBoard.getCell(row, column);
+    targetCell.setHit(true); // Marcar la celda como disparada
+
     if (targetCell instanceof Boat) {
-        Boat attackedBoat = (Boat) targetCell;
-        System.out.println("Hit! You hit the " + attackedBoat.getName());
-        enemyBoard.getCell(row, column);  // You might want to track damage here
+        System.out.println("Hit! You hit the " + ((Boat) targetCell).getDescription());
     } else {
         System.out.println("Miss! The shot hit water.");
     }
 }
 
 
+
     // Method to handle enemy attack (similarly, can be random)
+
     public static void enemyAttack(Board playerBoard) {
         Random rand = new Random();
-        int row = rand.nextInt(10);  // Random row
-        int col = rand.nextInt(10);  // Random column
+        int row, col;
+        Cell targetCell;
+
+        // Generar coordenadas aleatorias hasta encontrar una celda que no haya sido atacada
+        do {
+            row = rand.nextInt(playerBoard.getRowCount());  // Fila aleatoria
+            col = rand.nextInt(playerBoard.getColumnCount());  // Columna aleatoria
+            targetCell = playerBoard.getCell(row, col);
+        } while (targetCell.isHit()); // Repetir hasta encontrar una celda que no haya sido atacada
+
+        // Marcar la celda como disparada
+        targetCell.setHit(true);
         System.out.printf("Enemy attacks: Row %d, Column %d%n", row + 1, col + 1);
 
-        // Attack the player board
-        Cell targetCell = playerBoard.getCell(row, col);
-        if (targetCell instanceof Boat) {
-            Boat attackedBoat = (Boat) targetCell;
-            System.out.println("Enemy hit your " + attackedBoat.getName());
+        // Determinar si el ataque fue exitoso o falló
+        if (targetCell instanceof Boat attackedBoat) {
+            System.out.println("Enemy hit your " + attackedBoat.getDescription() + "!");
         } else {
             System.out.println("Enemy missed!");
         }
     }
 
     // Method to check if all boats on the board are sunk
+
     public static boolean isGameOver(Board board) {
         for (int i = 0; i < board.getRowCount(); i++) {
             for (int j = 0; j < board.getColumnCount(); j++) {
-                if (board.getCell(i, j) instanceof Boat) {
-                    return false;  // If there are still boats, the game is not over
+                Cell cell = board.getCell(i, j);
+                if (cell instanceof Boat && !((Boat) cell).isSunk(board)) {
+                    return false;  // Si hay al menos un barco no hundido, el juego no ha terminado
                 }
             }
         }
-        return true;  // If no boats left, game over
+        return true;  // Todos los barcos están hundidos, juego terminado
     }
 }

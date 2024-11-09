@@ -1,5 +1,7 @@
 package BatallaNaval;
 
+import boats.Boat;
+
 public class Board { // Renombrar a Board
 
     private Cell[][] cellMatrix;
@@ -15,7 +17,7 @@ public class Board { // Renombrar a Board
         }
     }
 
-    public boolean addBoat(int row, int column, Cell boat) {
+    public boolean addBoat(int row, int column, Boat boat) {
         int spacesNeeded = boat.getSpaceRequired();
 
         // Check if the space is available
@@ -26,12 +28,14 @@ public class Board { // Renombrar a Board
             }
         }
 
-        // Place the boat in the matrix
+        // Place the boat in the matrix and add the boat's cells
         for (int i = 0; i < spacesNeeded; i++) {
-            cellMatrix[row][column + i] = boat;
+            cellMatrix[row][column + i] = boat;  // Place the boat in the cell
         }
         return true; // Successfully added the boat
     }
+
+
 
     public Cell getCell(int row, int column) {
         if (row < cellMatrix.length && column < cellMatrix[0].length) {
@@ -73,7 +77,7 @@ public void displayBothBoards(Board playerBoard, Board enemyBoard) {
 
         // Print each cell of the player's board
         for (int j = 0; j < playerBoard.getColumnCount(); j++) {
-            System.out.print(playerBoard.getCell(i, j).getCharacter() + "     ");
+            System.out.print(playerBoard.getCell(i, j).getCharacter()+ "     ");
         }
 
         System.out.print("              "); // Space between boards
@@ -81,12 +85,7 @@ public void displayBothBoards(Board playerBoard, Board enemyBoard) {
         // Print the row letter (A-J) for the enemy's board
         System.out.print((char)('A' + i) + "  "); // Row letter for enemy's board
         for (int j = 0; j < enemyBoard.getColumnCount(); j++) {
-            // For enemy board, display hits/misses or water
-            if (enemyBoard.getCell(i, j) instanceof Water) {
-                System.out.print("~     "); // Show water for enemy board
-            } else {
-                System.out.print("X     "); // Show hit/miss for enemy board
-            }
+            System.out.print(enemyBoard.getCell(i, j).getCharacter() + "     ");
         }
 
         System.out.println();
@@ -96,7 +95,8 @@ public void displayBothBoards(Board playerBoard, Board enemyBoard) {
 
 
 
-    // Nuevos métodos para obtener el número de filas y columnas
+    // Nuevos métodos para obtener el número de filas y columnas por si hacemos 
+//  mapas customizados
     public int getRowCount() {
         return cellMatrix.length;
     }
