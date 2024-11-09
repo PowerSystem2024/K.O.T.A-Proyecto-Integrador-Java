@@ -88,6 +88,7 @@ public abstract class Boat extends Cell {
             return hitSections[sectionIndex];
         } else {// hago un check par ver si le llego un valor erroneo que rompa el juego
             System.out.println("Invalid section index: " + sectionIndex);
-        return false}
+            return false;
+        }
     }
 }

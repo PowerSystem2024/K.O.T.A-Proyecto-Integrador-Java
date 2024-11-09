@@ -3,6 +3,8 @@ package test;
 import BatallaNaval.*;
 import utils.Timer;
 import boats.*;
+import game.EnemyCommander;
+import game.PlayerCommander;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -17,35 +19,38 @@ public class TestBatallaNaval {
         Board enemyBoard = new Board(10, 10);
         
         // Initialize player and enemy
-        Jugador player = new Jugador(playerBoard);
-        Jugador enemy = new Jugador(enemyBoard);
-
-        // Create boats for the player
-        Boat aircraftCarrier = new AircraftCarrier();
-        Boat destroyer = new Destroyer();
-        Boat submarine = new Submarine();
-        Boat cruiser = new Cruise();
-        Boat motorboat1 = new Motorboat();
-
-        // Add boats to the player’s board
-        placeBoats(playerBoard, aircraftCarrier, 0, 0);
-        placeBoats(playerBoard, destroyer, 5, 5);
-        placeBoats(playerBoard, submarine, 2, 3);
-        placeBoats(playerBoard, cruiser, 7, 1);
-        placeBoats(playerBoard, motorboat1, 9, 9);
-
-        // Create and place enemy boats (can be randomized)
-        Boat enemyAircraftCarrier = new AircraftCarrier();
-        Boat enemyDestroyer = new Destroyer();
-        Boat enemySubmarine = new Submarine();
-        Boat enemyCruiser = new Cruise();
-        Boat enemyMotorboat = new Motorboat();
-
-        placeBoats(enemyBoard, enemyAircraftCarrier, 1, 1);
-        placeBoats(enemyBoard, enemyDestroyer, 2, 2);
-        placeBoats(enemyBoard, enemySubmarine, 3, 3);
-        placeBoats(enemyBoard, enemyCruiser, 7, 1);
-        placeBoats(enemyBoard, enemyMotorboat, 0, 6);
+        PlayerCommander playerCommander = new PlayerCommander(playerBoard);
+        EnemyCommander enemyCommander = new EnemyCommander(enemyBoard);
+        // Place boats on the boards
+        playerCommander.placeBoats();
+        enemyCommander.placeBoats();
+        
+//        // Create boats for the player
+//        Boat aircraftCarrier = new AircraftCarrier();
+//        Boat destroyer = new Destroyer();
+//        Boat submarine = new Submarine();
+//        Boat cruiser = new Cruise();
+//        Boat motorboat1 = new Motorboat();
+//
+//        // Add boats to the player’s board
+//        placeBoats(playerBoard, aircraftCarrier, 0, 0);
+//        placeBoats(playerBoard, destroyer, 5, 5);
+//        placeBoats(playerBoard, submarine, 2, 3);
+//        placeBoats(playerBoard, cruiser, 7, 1);
+//        placeBoats(playerBoard, motorboat1, 9, 9);
+//
+//        // Create and place enemy boats (can be randomized)
+//        Boat enemyAircraftCarrier = new AircraftCarrier();
+//        Boat enemyDestroyer = new Destroyer();
+//        Boat enemySubmarine = new Submarine();
+//        Boat enemyCruiser = new Cruise();
+//        Boat enemyMotorboat = new Motorboat();
+//
+//        placeBoats(enemyBoard, enemyAircraftCarrier, 1, 1);
+//        placeBoats(enemyBoard, enemyDestroyer, 2, 2);
+//        placeBoats(enemyBoard, enemySubmarine, 3, 3);
+//        placeBoats(enemyBoard, enemyCruiser, 7, 1);
+//        placeBoats(enemyBoard, enemyMotorboat, 0, 6);
 
         // Show both boards (optional, to visualize both)
         System.out.println("Player's board:");
@@ -72,7 +77,8 @@ public class TestBatallaNaval {
 
             // Enemy's turn
             System.out.println("Enemy's Turn:");
-            enemyAttack(playerBoard);
+            enemyCommander.enemyAttack(playerBoard); 
+            //enemyAttack(playerBoard);
             
             // Check if the player is out of boats (game over)
             if (isGameOver(playerBoard)) {
@@ -97,61 +103,61 @@ public class TestBatallaNaval {
         }
     }
 
-public static void playerAttack(Board enemyBoard) {
-    Scanner scanner = new Scanner(System.in);
-    System.out.println("Enter the coordinates of your attack (e.g., A1, B2):");
+    public static void playerAttack(Board enemyBoard) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the coordinates of your attack (e.g., A1, B2):");
 
-    String input = scanner.nextLine().toUpperCase().trim(); // Read input and format it
+        String input = scanner.nextLine().toUpperCase().trim(); // Read input and format it
 
-    // Check if input has at least two characters and no more than three
-    if (input.length() < 2 || input.length() > 3) {
-        System.out.println("Invalid input format. Please enter a letter followed by a number (e.g., A1).");
-        return;
-    }
-
-    char rowChar = input.charAt(0); // The first character should be a letter
-    String columnStr = input.substring(1); // The remaining characters should represent the row number
-
-    // Validate that the row is within the range 'A' to 'J'
-    if (rowChar < 'A' || rowChar > 'J') {
-        System.out.println("Invalid row. Please enter a letter between A and J.");
-        return;
-    }
-
-    int column;
-    try {
-        column = Integer.parseInt(columnStr) - 1; // Convert row to zero-based index
-    } catch (NumberFormatException e) {
-        System.out.println("Invalid column number. Please enter a number between 1 and 10.");
-        return;
-    }
-
-    // Ensure the column is within the board limits (1-10 becomes index 0-9)
-    if (column < 0 || column >= enemyBoard.getColumnCount()) {
-        System.out.println("Column out of range. Please enter a number between 1 and 10.");
-        return;
-    }
-
-    // Convert the row letter (A-J) to an index (0-9)
-    int row = rowChar - 'A';
-
-    System.out.printf("Player attacks: Row %d, Column %d%n", row + 1, column + 1);
-
-    // Proceed with the attack on the enemy board
-    Cell targetCell = enemyBoard.getCell(row, column);
-    targetCell.setHit(true); // Marcar la celda como disparada
-
-    if (targetCell instanceof Boat) {
-        Boat boat = (Boat) targetCell;
-        int sectionIndex = boat.getSectionIndex(row, column);  // Get the section index based on position
-        if (sectionIndex != -1) {
-            boat.hitSection(sectionIndex);  // Mark the specific section as hit
-            System.out.println("Hit! You hit the " + boat.getDescription());
+        // Check if input has at least two characters and no more than three
+        if (input.length() < 2 || input.length() > 3) {
+            System.out.println("Invalid input format. Please enter a letter followed by a number (e.g., A1).");
+            return;
         }
-    } else {
-        System.out.println("Miss! The shot hit water.");
+
+        char rowChar = input.charAt(0); // The first character should be a letter
+        String columnStr = input.substring(1); // The remaining characters should represent the row number
+
+        // Validate that the row is within the range 'A' to 'J'
+        if (rowChar < 'A' || rowChar > 'J') {
+            System.out.println("Invalid row. Please enter a letter between A and J.");
+            return;
+        }
+
+        int column;
+        try {
+            column = Integer.parseInt(columnStr) - 1; // Convert row to zero-based index
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid column number. Please enter a number between 1 and 10.");
+            return;
+        }
+
+        // Ensure the column is within the board limits (1-10 becomes index 0-9)
+        if (column < 0 || column >= enemyBoard.getColumnCount()) {
+            System.out.println("Column out of range. Please enter a number between 1 and 10.");
+            return;
+        }
+
+        // Convert the row letter (A-J) to an index (0-9)
+        int row = rowChar - 'A';
+
+        System.out.printf("Player attacks: Row %d, Column %d%n", row + 1, column + 1);
+
+        // Proceed with the attack on the enemy board
+        Cell targetCell = enemyBoard.getCell(row, column);
+        targetCell.setHit(true); // Marcar la celda como disparada
+
+        if (targetCell instanceof Boat) {
+            Boat boat = (Boat) targetCell;
+            int sectionIndex = boat.getSectionIndex(row, column);  // Get the section index based on position
+            if (sectionIndex != -1) {
+                boat.hitSection(sectionIndex);  // Mark the specific section as hit
+                System.out.println("Hit! You hit the " + boat.getDescription());
+            }
+        } else {
+            System.out.println("Miss! The shot hit water.");
+        }
     }
-}
 
 
 
