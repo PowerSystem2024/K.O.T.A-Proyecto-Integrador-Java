@@ -2,7 +2,7 @@ package boats;
 
 public class Destroyer extends Boat {
     public Destroyer(String name, int length) {
-        super(name, length);
+        super(name, length);        
     }
 
     @Override
@@ -12,7 +12,7 @@ public class Destroyer extends Boat {
 
     @Override
     public int getSpaceRequired() {
-        return 4; // Destroyer ocupa 4 espacios
+        return this.getLength(); // Destroyer ocupa 4 espacios
     }
 
     @Override

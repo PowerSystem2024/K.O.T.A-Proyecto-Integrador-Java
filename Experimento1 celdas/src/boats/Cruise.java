@@ -2,7 +2,8 @@ package boats;
 
 public class Cruise extends Boat {
     public Cruise(String name, int length) {
-        super(name, length);
+        super(name, length);  
+        
     }
 
     @Override

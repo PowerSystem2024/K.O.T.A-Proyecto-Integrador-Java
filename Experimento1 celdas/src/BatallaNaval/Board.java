@@ -48,6 +48,53 @@ public class Board { // Renombrar a Board
             System.out.println();
         }
     }
+    
+public void displayBothBoards(Board playerBoard, Board enemyBoard) {
+    // Print column numbers (1-10) at the top for both boards
+    System.out.println("Este es tu board :        "
+            + "                                                  Este es el board del enemigo : "); // Initial space for alignment
+    System.out.println();
+    System.out.print("   "); // Initial space for alignment
+    for (int c = 1; c <= 10; c++) {
+        System.out.print(c + "     "); // Print columns 1 to 10
+    }
+    System.out.print("                "); // Space between the two boards
+
+    for (int c = 1; c <= 10; c++) {
+        System.out.print(c + "     "); // Print columns 1 to 10 for enemy board
+    }
+    System.out.println();
+    System.out.println();
+
+    // Now, print the rows (A-J)
+    for (int i = 0; i < playerBoard.getRowCount(); i++) {
+        // Print the row letter (A-J) for the player's board
+        System.out.print((char)('A' + i) + "  "); // Row letter for player's board
+
+        // Print each cell of the player's board
+        for (int j = 0; j < playerBoard.getColumnCount(); j++) {
+            System.out.print(playerBoard.getCell(i, j).getCharacter() + "     ");
+        }
+
+        System.out.print("              "); // Space between boards
+
+        // Print the row letter (A-J) for the enemy's board
+        System.out.print((char)('A' + i) + "  "); // Row letter for enemy's board
+        for (int j = 0; j < enemyBoard.getColumnCount(); j++) {
+            // For enemy board, display hits/misses or water
+            if (enemyBoard.getCell(i, j) instanceof Water) {
+                System.out.print("~     "); // Show water for enemy board
+            } else {
+                System.out.print("X     "); // Show hit/miss for enemy board
+            }
+        }
+
+        System.out.println();
+        System.out.println();
+    }
+}
+
+
 
     // Nuevos métodos para obtener el número de filas y columnas
     public int getRowCount() {
