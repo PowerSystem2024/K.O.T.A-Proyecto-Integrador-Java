@@ -1,19 +1,25 @@
 package maingame;
 
+import java.util.Scanner;
 import utils.StartAnimation;
 
 public class MainGame {
-    public static void main(String[] args) {
-        try {
-            // Mostrar la animación al inicio del juego
-            StartAnimation animacion = new StartAnimation();
-            animacion.mostrar();  // Llamar al método que muestra la animación
+    public static void main(String[] args) throws InterruptedException {
+        Scanner scanner = new Scanner(System.in);
 
-            // Continuar con el flujo del juego
-            utils.Menu menu = new utils.Menu();
-            menu.showMenu();  // Mostrar el menú
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        // Mostrar mensaje para mejorar la experiencia
+        System.out.println("To enhance your gaming experience, double-click on the Output window of the console to maximize it to full screen.");
+        System.out.println("Then, press Enter to continue...");
+
+        // Esperar a que el usuario presione Enter
+        scanner.nextLine();
+
+        // Iniciar la animación
+        StartAnimation startAnimation = new StartAnimation();
+        startAnimation.mostrar();
+
+        // Mostrar el Menu del juego
+        utils.Menu menu = new utils.Menu();
+        menu.showMenu();
     }
 }
