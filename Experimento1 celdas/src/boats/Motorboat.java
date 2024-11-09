@@ -1,27 +1,18 @@
 package boats;
 
-import BatallaNaval.Cell;
 
 // La clase Motorboat extiende la clase Boat
 public class Motorboat extends Boat {
+    private static final String NAME = "Motorboat";
+    private static final int MOTORBOAT_LENGHT  = 1;
+    private static final char MOTORBOAT_CHAR  = 'M';
 
-    // Constructor de la clase Motorboat
-    public Motorboat(String name, int length) {
-        super(name, length); // Llama al constructor de la clase padre (Boat)
+    public Motorboat() {
+        super(NAME, MOTORBOAT_LENGHT, MOTORBOAT_CHAR); // Llama al constructor de la clase padre (Boat)
     }
 
     @Override
     public void sail() {
-        System.out.println(getName() + " is speeding through the water!"); // Mensaje cuando el motorboat navega
-    }
-
-    @Override
-    public int getSpaceRequired() {
-        return 1; // Motorboat ocupa 1 espacio
-    }
-
-    @Override
-    public char getCharacter() {
-        return 'M'; // Caracter que representará el motorboat
+        System.out.println(this.getDescription()+ " is speeding through the water!"); // Mensaje cuando el motorboat navega
     }
 }

@@ -1,18 +1,22 @@
 package BatallaNaval;
 
-public class Water extends Cell {
+public class Water extends Cell { 
+    
+    private static final String NAME = "Water";
+    private static final int LENGTH = 1;
+    private static final char CHARACTER = '~';
+    
+    public Water() {
+        super('~');
+    }
     @Override
     public String getDescription() {
-        return "Water";
+        return NAME;
     }
 
     @Override
     public int getSpaceRequired() {
-        return 1; // Water occupies one space
+        return LENGTH; // Water occupies one space
     }
 
-    @Override
-    public char getCharacter() {
-        return '~'; // agregar una constante
-    }
 }
