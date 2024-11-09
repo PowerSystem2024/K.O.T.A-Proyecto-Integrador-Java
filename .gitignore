@@ -1,3 +1,34 @@
 /New Folder/ExperimentoTimer/nbproject/private/
 /New Folder/ExperimentoTimer/build/
+
+# NetBeans IDE files
+nbproject/private/
+nbbuild/
+build/
+dist/
+*.bak
+*.swp
+*~
+
+# IDE specific files (NetBeans, etc.)
+*.log
 *.class
+
+# Java project files
+*.jar
+*.war
+*.ear
+
+# Maven files (if using Maven)
+target/
+
+# Gradle files (if using Gradle)
+.gradle/
+
+# System files
+.DS_Store      # macOS
+Thumbs.db      # Windows
+
+# User-specific files
+.idea/         # IntelliJ IDEA
+*.iml          # IntelliJ IDEA project files
