@@ -1,22 +1,18 @@
 package boats;
 
 public class Submarine extends Boat {
-    public Submarine(String name, int length) {
-        super(name, length);
+    private static final String NAME = "Submarine";
+    private static final int SUBMARINE_LENGHT  = 3;
+    private static final char SUBMARINE_CHAR  = 'S';
+    
+    public Submarine() {
+        super(NAME, SUBMARINE_LENGHT, SUBMARINE_CHAR);
     }
 
+    
     @Override
     public void sail() {
-        System.out.println(getName() + " is diving underwater!");
+        System.out.println(this.getDescription()+ " is diving underwater!");
     }
 
-    @Override
-    public int getSpaceRequired() {
-        return 3; // Submarine ocupa 3 espacios
-    }
-
-    @Override
-    public char getCharacter() {
-        return 'S'; // Caracter que representará el barco
-    }
 }
