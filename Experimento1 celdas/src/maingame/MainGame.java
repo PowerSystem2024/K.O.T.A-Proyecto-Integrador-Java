@@ -1,19 +1,25 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package maingame;
 
-/**
- *
- * @author Mkjdf983
- */
+import java.util.Scanner;
+import utils.StartAnimation;
+
 public class MainGame {
-    public static void main(String[] args) {
-            //poner menu
-            // class animacion
-            // menu 1- jugar 2 reglas 3 creditos 4 salir 5 leaderboard
+    public static void main(String[] args) throws InterruptedException {
+        Scanner scanner = new Scanner(System.in);
 
+        // Mostrar mensaje para mejorar la experiencia
+        System.out.println("To enhance your gaming experience, double-click on the Output window of the console to maximize it to full screen.");
+        System.out.println("Then, press Enter to continue...");
+
+        // Esperar a que el usuario presione Enter
+        scanner.nextLine();
+
+        // Iniciar la animación
+        StartAnimation startAnimation = new StartAnimation();
+        startAnimation.mostrar();
+
+        // Mostrar el Menu del juego
+        utils.Menu menu = new utils.Menu();
+        menu.showMenu();
     }
-
 }
