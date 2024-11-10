@@ -56,8 +56,8 @@ public class Board { // Renombrar a Board
     
     public void displayBothBoards(Board playerBoard, Board enemyBoard) {
         // Print column numbers (1-10) at the top for both boards
-        System.out.println("Este es tu board :        "
-                + "                                                  Este es el board del enemigo : ");
+        System.out.println("This is your board :        "
+                + "                                                  This is the Enemt's board : ");
         System.out.println();
         System.out.print("   "); // Initial space for alignment
         for (int c = 1; c <= 10; c++) {

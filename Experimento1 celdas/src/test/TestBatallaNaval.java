@@ -94,7 +94,7 @@ public class TestBatallaNaval {
         scanner.close();
     }
 
-    // Method to place boats on the board
+    // Ubica los barcos llamando al tablero
     public static void placeBoats(Board board, Boat boat, int row, int col) {
         if (board.addBoat(row, col, boat)) {
             System.out.println(boat.getDescription() + " added successfully.");
@@ -102,7 +102,7 @@ public class TestBatallaNaval {
             System.out.println("Failed to add " + boat.getDescription());
         }
     }
-
+        // semovio a la clase commander y player commander
     public static void playerAttack(Board enemyBoard) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the coordinates of your attack (e.g., A1, B2):");
@@ -162,7 +162,7 @@ public class TestBatallaNaval {
 
 
     // Method to handle enemy attack (similarly, can be random)
-
+    // semovio a la clase commander y enemy commander
     public static void enemyAttack(Board playerBoard) {
         Random rand = new Random();
         int row, col;
