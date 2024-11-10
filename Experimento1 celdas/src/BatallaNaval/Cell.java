@@ -23,9 +23,22 @@ public abstract class Cell {
         return isHit ? CELL_IS_HIT_CHAR : CELL_CHAR;
     }
 
+    public char getCELL_CHAR() {
+        return CELL_CHAR;
+    }
+    // uso este por si necesito imprimir en consola sout me daba erro co nel CHAR
+    public String getCELL_CHARAsString() {
+        return String.valueOf(getCELL_CHAR());
+    }
+
     // Método abstracto para obtener la descripción de la celda
     public abstract String getDescription();
 
     // Método abstracto para obtener el espacio requerido por la celda
     public abstract int getSpaceRequired();
+
+
+    
+    
+    
 }

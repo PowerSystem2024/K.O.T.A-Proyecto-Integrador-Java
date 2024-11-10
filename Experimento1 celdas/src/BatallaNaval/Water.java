@@ -7,7 +7,7 @@ public class Water extends Cell {
     private static final char CHARACTER = '~';
     
     public Water() {
-        super('~');
+        super(CHARACTER);
     }
     @Override
     public String getDescription() {

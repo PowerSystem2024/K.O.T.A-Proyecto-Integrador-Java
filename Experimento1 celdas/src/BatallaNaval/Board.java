@@ -44,7 +44,7 @@ public class Board { // Renombrar a Board
         }
         return null;
     }
-
+    // este se uso para testear en crudo los vores
     public void displayCells() {
         for (int i = 0; i < cellMatrix.length; i++) {
             for (int j = 0; j < cellMatrix[i].length; j++) {
@@ -56,8 +56,8 @@ public class Board { // Renombrar a Board
     
     public void displayBothBoards(Board playerBoard, Board enemyBoard) {
         // Print column numbers (1-10) at the top for both boards
-        System.out.println("Este es tu board :        "
-                + "                                                  Este es el board del enemigo : ");
+        System.out.println("This is your board :        "
+                + "                                                  This is the Enemt's board : ");
         System.out.println();
         System.out.print("   "); // Initial space for alignment
         for (int c = 1; c <= 10; c++) {
@@ -108,11 +108,14 @@ public class Board { // Renombrar a Board
                     Boat boat = (Boat) cell;
 
                     // Check if the current cell is part of the boat
+                    boolean sectionIsHit = false;
                     for (int k = 0; k < boat.getPositions().size(); k++) {
                         int[] position = boat.getPositions().get(k);
                         if (position[0] == i && position[1] == j) {
                             // Show the character for the specific section of the boat
-                            System.out.print(boat.getSectionCharacter(k) + "     ");
+                            sectionIsHit = boat.getHitSection(k); // Check if this specific section is hit
+                            System.out.print(sectionIsHit ? boat.getCELL_CHARAsString(): "~"); // Show boat character if hit, else water
+                            System.out.print("     ");
                             break;
                         }
                     }

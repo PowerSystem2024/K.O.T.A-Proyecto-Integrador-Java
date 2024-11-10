@@ -1,6 +1,7 @@
 package maingame;
 
 import java.util.Scanner;
+import utils.Menu;
 import utils.StartAnimation;
 
 public class MainGame {
@@ -16,10 +17,10 @@ public class MainGame {
 
         // Iniciar la animación
         StartAnimation startAnimation = new StartAnimation();
-        startAnimation.mostrar();
+        //startAnimation.mostrar();
 
         // Mostrar el Menu del juego
-        utils.Menu menu = new utils.Menu();
+        Menu menu = new utils.Menu();
         menu.showMenu();
     }
 }

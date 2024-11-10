@@ -1,12 +1,13 @@
 package utils;
 
+import game.Game;
 import java.util.Scanner;
 import test.TestBatallaNaval;
 
 public class Menu {
 
     public void showMenu() {
-        System.out.println("Iniciando el menú"); // Mensaje de depuración
+        System.out.println("Starting the menu"); // Mensaje de depuración
         Scanner scanner = new Scanner(System.in);
         int opcion = 0;
 
@@ -32,6 +33,7 @@ public class Menu {
                         break;
                     case 4:
                         System.out.println("Thank you for playing Battleship! We hope you enjoyed the adventure. See you next time!");
+                        scanner.close();
                         break;
 
                     default:
@@ -43,12 +45,13 @@ public class Menu {
             }
         } while (opcion != 4);
 
-        scanner.close();
+        
     }
 
     private void iniciarJuego() {
         System.out.println("Starting the game...");
-        TestBatallaNaval.main(new String[]{}); // Llama al método main de la clase TestBatallaNaval
+        Game newGame = new Game();
+        newGame.gameLoop(); // Creamos el loop del juego
     }
 
     private void showRules() {
