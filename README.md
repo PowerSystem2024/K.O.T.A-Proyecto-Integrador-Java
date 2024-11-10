@@ -9,6 +9,8 @@ Integrantes :
 
 -Maxi Montenegro
 
+El juego puede ser ejecutado ademas por fuera de un IDE desde el exe en la carpeta Ejecutable. Si desea compilarlo usted aqui le dejamos la documentacion de como hacerlo.
+
 ### Documentación para Compilar y Ejecutar el Juego de Batalla Naval en Java por fuera de netbeans.
 
 ### Requisitos Previos
