@@ -33,3 +33,4 @@ Thumbs.db      # Windows
 # Ignore specific files in the project
 Experimento1 celdas/build/built-jar.properties
 Experimento1 celdas/nbproject/private/private.properties
+/BatallaNaval/nbproject/private/
