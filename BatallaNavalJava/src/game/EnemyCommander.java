@@ -30,26 +30,12 @@ public class EnemyCommander extends Commander {
             while (!placed) {
                 // Generamos una posición aleatoria para el barco (solo horizontal)
                 int row = rand.nextInt(board.getRowCount());
-                int col = rand.nextInt(board.getColumnCount());
+                int col = rand.nextInt(board.getColumnCount() - boat.getSpaceRequired());
 
                 // Verificamos si el barco cabe en la posición horizontal generada
                 if (col + boat.getLength() <= board.getColumnCount()) {
-                    boolean canPlace = true;
-                    // Verificamos si el espacio está ocupado por otro barco
-                    for (int i = 0; i < boat.getLength(); i++) {
-                        if (board.getCell(row, col + i) instanceof Boat) {
-                            canPlace = false;
-                            break;
-                        }
-                    }
+                    placed = board.addBoat(row, col, boat);
 
-                    if (canPlace) {
-                        // Colocamos el barco horizontalmente
-                        for (int i = 0; i < boat.getLength(); i++) {
-                            board.addBoat(row, col + i, boat);
-                        }
-                        placed = true;
-                    }
                 }
             }
         }
