@@ -3,6 +3,7 @@ package game;
 import BatallaNaval.Board;
 import boats.*;
 import java.util.Scanner;
+import utils.CleanScreen;
 
 public class PlayerCommander extends Commander {
 
@@ -33,9 +34,9 @@ public class PlayerCommander extends Commander {
                 // Pedimos las coordenadas para colocar el barco
                 System.out.printf("Enter the starting row (0-%d) for your %s: ", board.getRowCount() - 1, boat.getDescription());
                 int row = scanner.nextInt();
+                board.displayBothBoards(board, board);
                 System.out.printf("Enter the starting column (0-%d) for your %s: ", board.getColumnCount() - 1, boat.getDescription());
                 int col = scanner.nextInt();
-
                 // Intentamos agregar el barco, si addBoat devuelve true, el barco se coloca correctamente
                 if (board.addBoat(row, col, boat)) {
                     placed = true;

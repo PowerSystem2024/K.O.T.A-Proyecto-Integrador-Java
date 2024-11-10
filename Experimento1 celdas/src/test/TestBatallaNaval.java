@@ -7,6 +7,7 @@ import game.EnemyCommander;
 import game.PlayerCommander;
 import java.util.Random;
 import java.util.Scanner;
+import utils.CleanScreen;
 
 public class TestBatallaNaval {
 
@@ -108,9 +109,10 @@ public class TestBatallaNaval {
         System.out.println("Enter the coordinates of your attack (e.g., A1, B2):");
 
         String input = scanner.nextLine().toUpperCase().trim(); // Read input and format it
-
+        CleanScreen.clearScreen(); // se limpa la pantalla 
         // Check if input has at least two characters and no more than three
         if (input.length() < 2 || input.length() > 3) {
+            //CleanScreen.clearScreen();
             System.out.println("Invalid input format. Please enter a letter followed by a number (e.g., A1).");
             return;
         }

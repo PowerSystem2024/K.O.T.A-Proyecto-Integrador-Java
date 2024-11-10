@@ -17,6 +17,7 @@ public class GameRules {
         System.out.println("9. The first player to sink all the opponent's ships wins the game.");
         System.out.println("10. Players must stay alert, and every attack counts!");
         System.out.println("11. Remember, the enemy may attack back after your turn.");
+        System.out.println("\nPress Enter to return to the main menu.");
         System.out.println();
     }
 }

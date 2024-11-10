@@ -1,6 +1,7 @@
 package BatallaNaval;
 
 import boats.Boat;
+import utils.CleanScreen;
 
 public class Board { // Renombrar a Board
 

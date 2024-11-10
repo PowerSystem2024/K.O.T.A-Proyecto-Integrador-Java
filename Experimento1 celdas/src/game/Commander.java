@@ -34,7 +34,7 @@ public abstract class Commander {
                     return true;  // Successful hit
                 }
             }
-            System.out.println(name + " missed!");
+            System.out.println(name + " missed! The shot hit the water.");
             return false;  // Missed attack
         
 
