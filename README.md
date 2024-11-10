@@ -71,7 +71,7 @@ Para ejecutar el juego, simplemente utiliza el siguiente comando:
 
       java -jar BatallaNavalJava.jar
 
-#### Paso 4: Ejecutar el Juego sin Consola en Windows  y crear un EXE con Launch4j
+#### Paso 4: Ejecutar el Juego sin Comandos en Consola en Windows y crear un EXE con Launch4j
 
 Para ejecutar el juego sin consola en Windows:
 
@@ -82,7 +82,7 @@ Launch4j  permite envolver el archivo JAR en un ejecutable (EXE) para Windows, l
     2 Configurar el archivo JAR:
         En "Output file", selecciona la ruta y nombre del archivo .exe que deseas crear.
         En "Jar", selecciona el archivo BatallaNavalJava.jar.
-        Marca la casilla "Don't launch console" para ocultar la consola.
+        En la pestaña HEADER marca header type CONSOLE.
 
     3 Especificar la ruta del JDK o JRE (opcional):
         En "JRE", selecciona la versión mínima de Java que tu aplicación necesita (por ejemplo, 1.8.0 para Java 8).
