@@ -62,6 +62,7 @@ public class PlayerCommander extends Commander {
         
         while (!validInput) {
             System.out.printf("Enter the starting position (e.g., A1) for your %s: ", boat.getDescription());
+            System.out.println();
             board.displayBothBoards(board, board);
             input = scanner.nextLine().toUpperCase();
             CleanScreen.clearScreen();
