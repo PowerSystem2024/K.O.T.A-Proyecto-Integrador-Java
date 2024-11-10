@@ -5,6 +5,7 @@ import BatallaNaval.Cell;
 import boats.Boat;
 import score.Score;
 import static test.TestBatallaNaval.playerAttack; // remover desp de que este player commander
+import utils.CleanScreen;
 import utils.Timer;
 
 public class Game {
@@ -40,10 +41,11 @@ public class Game {
         
         while (!gameOver) {        
             // Player’s turn
+            //CleanScreen.clearScreen();
             System.out.println("Player's Turn:");
             elapsedTime = timer.getElapsedTime();
             System.out.printf("Current game time: %s%n", elapsedTime);
-            playerAttack(enemyBoard);
+            playerCommander.playerAttack(enemyBoard);
 
             // Check if the game is over (if all enemy boats are sunk)
             if (isGameOver(enemyBoard)) {
