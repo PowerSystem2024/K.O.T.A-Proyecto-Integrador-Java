@@ -3,6 +3,7 @@ package game;
 import BatallaNaval.Board;
 import boats.*;
 import java.util.Scanner;
+import utils.CleanScreen;
 
 public class PlayerCommander extends Commander {
 

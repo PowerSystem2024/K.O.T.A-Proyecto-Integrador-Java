@@ -5,7 +5,6 @@ import BatallaNaval.Cell;
 import boats.Boat;
 import score.Score;
 import static test.TestBatallaNaval.playerAttack; // remover desp de que este player commander
-import utils.StartAnimation;
 import utils.Timer;
 
 public class Game {
@@ -39,12 +38,11 @@ public class Game {
         //System.out.printf("Total game time: %s%n", elapsedTime);
 
         
-        while (!gameOver) {
-            playerBoard.displayBothBoards(playerBoard, enemyBoard);
+        while (!gameOver) {        
             // Player’s turn
             System.out.println("Player's Turn:");
             elapsedTime = timer.getElapsedTime();
-            System.out.printf("Total game time: %s%n", elapsedTime);
+            System.out.printf("Current game time: %s%n", elapsedTime);
             playerAttack(enemyBoard);
 
             // Check if the game is over (if all enemy boats are sunk)
@@ -53,11 +51,11 @@ public class Game {
                 System.out.println("Player wins!");
                 break;
             }
-
             // Enemy's turn
-            System.out.println("Enemy's Turn:");
+            System.out.println("Enemy's Turn:"); 
             enemyCommander.enemyAttack(playerBoard); 
             //enemyAttack(playerBoard);
+            playerBoard.displayBothBoards(playerBoard, enemyBoard);
 
             // Check if the player is out of boats (game over)
             if (isGameOver(playerBoard)) {
@@ -65,6 +63,8 @@ public class Game {
                 System.out.println("Enemy wins!");
                 break;
             }
+
+ 
         }
         
         // Print elapsed time

@@ -2,7 +2,6 @@ package utils;
 
 import game.Game;
 import java.util.Scanner;
-import test.TestBatallaNaval;
 
 public class Menu {
 
@@ -58,6 +57,8 @@ public class Menu {
         // Llamamos a la clase GameRules para mostrar las reglas
         GameRules gameRules = new GameRules();
         gameRules.showRules();
+        Scanner scanner = new Scanner(System.in);
+        scanner.nextLine();
     }
 
     private void showCredits() {
