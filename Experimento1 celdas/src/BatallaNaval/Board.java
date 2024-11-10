@@ -24,7 +24,7 @@ public class Board { // Renombrar a Board
         // Check if the space is available
         for (int i = 0; i < spacesNeeded; i++) {
             if (row >= cellMatrix.length || column + i >= cellMatrix[0].length || !(cellMatrix[row][column + i] instanceof Water)) {
-                System.out.println("Not enough space for " + boat.getDescription());
+
                 return false; // Not enough space or cell is occupied
             }
         }
@@ -37,14 +37,13 @@ public class Board { // Renombrar a Board
         return true; // Successfully added the boat
     }
 
-
-
     public Cell getCell(int row, int column) {
         if (row < cellMatrix.length && column < cellMatrix[0].length) {
             return cellMatrix[row][column];
         }
         return null;
     }
+
     // este se uso para testear en crudo los vores
     public void displayCells() {
         for (int i = 0; i < cellMatrix.length; i++) {
@@ -54,7 +53,7 @@ public class Board { // Renombrar a Board
             System.out.println();
         }
     }
-    
+
     public void displayBothBoards(Board playerBoard, Board enemyBoard) {
         // Print column numbers (1-10) at the top for both boards
         System.out.println("This is your board :        "
@@ -75,7 +74,7 @@ public class Board { // Renombrar a Board
         // Now, print the rows (A-J)
         for (int i = 0; i < playerBoard.getRowCount(); i++) {
             // Print the row letter (A-J) for the player's board
-            System.out.print((char)('A' + i) + "  "); // Row letter for player's board
+            System.out.print((char) ('A' + i) + "  "); // Row letter for player's board
 
             // Print each cell of the player's board
             for (int j = 0; j < playerBoard.getColumnCount(); j++) {
@@ -101,7 +100,7 @@ public class Board { // Renombrar a Board
             System.out.print("              "); // Space between boards
 
             // Print the row letter (A-J) for the enemy's board
-            System.out.print((char)('A' + i) + "  "); // Row letter for enemy's board
+            System.out.print((char) ('A' + i) + "  "); // Row letter for enemy's board
             for (int j = 0; j < enemyBoard.getColumnCount(); j++) {
                 Cell cell = enemyBoard.getCell(i, j);
 
@@ -115,7 +114,7 @@ public class Board { // Renombrar a Board
                         if (position[0] == i && position[1] == j) {
                             // Show the character for the specific section of the boat
                             sectionIsHit = boat.getHitSection(k); // Check if this specific section is hit
-                            System.out.print(sectionIsHit ? boat.getCELL_CHARAsString(): "~"); // Show boat character if hit, else water
+                            System.out.print(sectionIsHit ? boat.getCELL_CHARAsString() : "~"); // Show boat character if hit, else water
                             System.out.print("     ");
                             break;
                         }
@@ -129,11 +128,6 @@ public class Board { // Renombrar a Board
             System.out.println();
         }
     }
-
-
-
-
-
 
     // Nuevos métodos para obtener el número de filas y columnas por si hacemos 
 //  mapas customizados

@@ -6,7 +6,7 @@ import boats.*;
 import java.util.Random;
 
 public class EnemyCommander extends Commander {
-    
+
     public EnemyCommander(Board board) {
         super("Enemy", board);
     }
@@ -19,16 +19,43 @@ public class EnemyCommander extends Commander {
         Boat enemyCruiser = new Cruise();
         Boat enemyMotorboat = new Motorboat();
 
-        // Randomly place the enemy boats (or you can implement custom logic for placement)
-        board.addBoat(1, 1, enemyAircraftCarrier);
-        board.addBoat(2, 2, enemyDestroyer);
-        board.addBoat(3, 3, enemySubmarine);
-        board.addBoat(7, 1, enemyCruiser);
-        board.addBoat(0, 6, enemyMotorboat);
+        // Arreglo con todos los barcos
+        Boat[] boats = {enemyAircraftCarrier, enemyDestroyer, enemySubmarine, enemyCruiser, enemyMotorboat};
+        Random rand = new Random();
+
+        // Colocamos los barcos de manera aleatoria (solo horizontal)
+        for (Boat boat : boats) {
+            boolean placed = false;
+
+            while (!placed) {
+                // Generamos una posición aleatoria para el barco (solo horizontal)
+                int row = rand.nextInt(board.getRowCount());
+                int col = rand.nextInt(board.getColumnCount());
+
+                // Verificamos si el barco cabe en la posición horizontal generada
+                if (col + boat.getLength() <= board.getColumnCount()) {
+                    boolean canPlace = true;
+                    // Verificamos si el espacio está ocupado por otro barco
+                    for (int i = 0; i < boat.getLength(); i++) {
+                        if (board.getCell(row, col + i) instanceof Boat) {
+                            canPlace = false;
+                            break;
+                        }
+                    }
+
+                    if (canPlace) {
+                        // Colocamos el barco horizontalmente
+                        for (int i = 0; i < boat.getLength(); i++) {
+                            board.addBoat(row, col + i, boat);
+                        }
+                        placed = true;
+                    }
+                }
+            }
+        }
     }
-    
-    
-        // Method for enemy attack with random targeting
+
+    // Método para el ataque del enemigo con coordenadas aleatorias
     public void enemyAttack(Board playerBoard) {
         Random rand = new Random();
         int row, col;
@@ -36,21 +63,21 @@ public class EnemyCommander extends Commander {
         boolean validTargetFound;
 
         do {
-        // Generate random coordinates
-        row = rand.nextInt(playerBoard.getRowCount());
-        col = rand.nextInt(playerBoard.getColumnCount());
-        targetCell = playerBoard.getCell(row, col);
-        
-        // Check if the cell is water or an unhit section of a boat
-        if (targetCell instanceof Boat attackedBoat) {
-            int sectionIndex = attackedBoat.getSectionIndex(row, col);
-            validTargetFound = sectionIndex != -1 && !attackedBoat.getHitSection(sectionIndex); // Check if specific section isn't hit
-        } else {
-            validTargetFound = !targetCell.isHit(); // Water cell that hasn't been hit
-        }
-
+            // Generar coordenadas aleatorias
+            row = rand.nextInt(playerBoard.getRowCount());
+            col = rand.nextInt(playerBoard.getColumnCount());
+            targetCell = playerBoard.getCell(row, col);
+            
+            // Verificar si la celda es agua o una sección no golpeada de un barco
+            if (targetCell instanceof Boat attackedBoat) {
+                int sectionIndex = attackedBoat.getSectionIndex(row, col);
+                validTargetFound = sectionIndex != -1 && !attackedBoat.getHitSection(sectionIndex); // Verificar que la sección no haya sido golpeada
+            } else {
+                validTargetFound = !targetCell.isHit(); // Celda de agua que no ha sido golpeada
+            }
         } while (!validTargetFound);
         
+        // Realizar el ataque
         attack(playerBoard, row, col);
-    }   
+    }
 }

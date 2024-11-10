@@ -26,39 +26,9 @@ public class TestBatallaNaval {
         playerCommander.placeBoats();
         enemyCommander.placeBoats();
         
-//        // Create boats for the player
-//        Boat aircraftCarrier = new AircraftCarrier();
-//        Boat destroyer = new Destroyer();
-//        Boat submarine = new Submarine();
-//        Boat cruiser = new Cruise();
-//        Boat motorboat1 = new Motorboat();
-//
-//        // Add boats to the player’s board
-//        placeBoats(playerBoard, aircraftCarrier, 0, 0);
-//        placeBoats(playerBoard, destroyer, 5, 5);
-//        placeBoats(playerBoard, submarine, 2, 3);
-//        placeBoats(playerBoard, cruiser, 7, 1);
-//        placeBoats(playerBoard, motorboat1, 9, 9);
-//
-//        // Create and place enemy boats (can be randomized)
-//        Boat enemyAircraftCarrier = new AircraftCarrier();
-//        Boat enemyDestroyer = new Destroyer();
-//        Boat enemySubmarine = new Submarine();
-//        Boat enemyCruiser = new Cruise();
-//        Boat enemyMotorboat = new Motorboat();
-//
-//        placeBoats(enemyBoard, enemyAircraftCarrier, 1, 1);
-//        placeBoats(enemyBoard, enemyDestroyer, 2, 2);
-//        placeBoats(enemyBoard, enemySubmarine, 3, 3);
-//        placeBoats(enemyBoard, enemyCruiser, 7, 1);
-//        placeBoats(enemyBoard, enemyMotorboat, 0, 6);
 
-        // Show both boards (optional, to visualize both)
         System.out.println("Player's board:");
-        //playerBoard.displayCells();
-//        System.out.println("Enemy's board:");
-//        enemyBoard.displayCells();
-
+       
         // Game loop: Player and enemy alternate turns
         boolean gameOver = false;
         Scanner scanner = new Scanner(System.in);

@@ -5,6 +5,7 @@ import utils.Menu;
 import utils.StartAnimation;
 
 public class MainGame {
+
     public static void main(String[] args) throws InterruptedException {
         Scanner scanner = new Scanner(System.in);
 
@@ -16,9 +17,8 @@ public class MainGame {
         scanner.nextLine();
 
         // Iniciar la animación
-        StartAnimation startAnimation = new StartAnimation();
+        //StartAnimation startAnimation = new StartAnimation();
         //startAnimation.mostrar();
-
         // Mostrar el Menu del juego
         Menu menu = new utils.Menu();
         menu.showMenu();
