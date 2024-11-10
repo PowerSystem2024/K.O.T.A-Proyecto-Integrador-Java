@@ -8,13 +8,13 @@ public abstract class Commander {
     protected String name;
     protected Board board;
 
-    public Commander(String name, Board board) {
+    public Commander(String name, Board board) {//constructor
         this.name = name;
         this.board = board;
     }
 
     // Abstract method to place boats (Player and Enemy will override this if needed)
-    public abstract void placeBoats();
+    public abstract void placeBoats();// Abstract method
 
     // Attack method for both Player and Enemy (shared logic)
     public boolean attack(Board targetBoard, int row, int col) {
