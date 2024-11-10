@@ -1,0 +1,36 @@
+# NetBeans IDE files
+nbproject/private/
+nbbuild/
+build/
+dist/
+*.bak
+*.swp
+*~
+
+# IDE specific files (NetBeans, etc.)
+*.log
+*.class
+
+# Java project files
+*.jar
+*.war
+*.ear
+
+# Maven files (if using Maven)
+target/
+
+# Gradle files (if using Gradle)
+.gradle/
+
+# System files
+.DS_Store      # macOS
+Thumbs.db      # Windows
+
+# User-specific files
+.idea/         # IntelliJ IDEA
+*.iml          # IntelliJ IDEA project files
+
+# Ignore specific files in the project
+Experimento1 celdas/build/built-jar.properties
+Experimento1 celdas/nbproject/private/private.properties
+/BatallaNaval/nbproject/private/
