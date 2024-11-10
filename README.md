@@ -12,10 +12,12 @@ Integrantes :
 ### Documentación para Compilar y Ejecutar el Juego de Batalla Naval en Java por fuera de netbeans.
 
 ### Requisitos Previos
+    
+Instalar JDK: Asegúrate de tener instalado el Java Development Kit (JDK). Puedes verificar la instalación ejecutando javac -version y java -version en la terminal o     consola. Si no aparece la versión, instala el JDK y configura las variables de entorno (JAVA_HOME y PATH).
 
-    Instalar JDK: Asegúrate de tener instalado el Java Development Kit (JDK). Puedes verificar la instalación ejecutando javac -version y java -version en la terminal o consola. Si no aparece la versión, instala el JDK y configura las variables de entorno (JAVA_HOME y PATH).
-    Estructura del Proyecto:
-        Tu proyecto debe tener una estructura de carpetas que separe el código fuente (src) y los archivos compilados (out). Por ejemplo:
+Estructura del Proyecto:
+
+Tu proyecto debe tener una estructura de carpetas que separe el código fuente (src) y los archivos compilados (out). Por ejemplo:
 
 BatallaNavalJava/
 
@@ -53,13 +55,13 @@ Esto le indica al JAR qué clase contiene el método main.
 
 Crear el JAR: Ejecuta el siguiente comando para empaquetar el proyecto en un archivo JAR:
 
-  jar cfm BatallaNavalJava.jar Manifest.txt -C out .
+      jar cfm BatallaNavalJava.jar Manifest.txt -C out .
 
 Este comando crea un archivo JAR ejecutable llamado BatallaNavalJava.jar en el directorio actual, incluyendo el manifiesto y todos los archivos .class del directorio out.
 
 Verificar el JAR: Puedes verificar que el JAR está correctamente configurado ejecutando:
 
-  jar tf BatallaNavalJava.jar
+      jar tf BatallaNavalJava.jar
 
 Deberías ver una lista de archivos .class y el manifiesto.
 
@@ -67,7 +69,7 @@ Deberías ver una lista de archivos .class y el manifiesto.
 
 Para ejecutar el juego, simplemente utiliza el siguiente comando:
 
-  java -jar BatallaNavalJava.jar
+      java -jar BatallaNavalJava.jar
 
 #### Paso 4: Ejecutar el Juego sin Consola en Windows  y crear un EXE con Launch4j
 
@@ -99,4 +101,5 @@ Launch4j  permite envolver el archivo JAR en un ejecutable (EXE) para Windows, l
 #### Posibles Errores y Soluciones
 
   Error no main manifest attribute: Verifica que Manifest.txt está correctamente configurado con Main-Class y que el archivo JAR fue creado usando -cfm. Y que tenga una linea en blanco al final.
+  
   Error de archivo no encontrado: Asegúrate de que las rutas especificadas (como src/maingame/MainGame.java) son correctas.
