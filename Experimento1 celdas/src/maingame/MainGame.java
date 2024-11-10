@@ -17,7 +17,7 @@ public class MainGame {
 
         // Iniciar la animación
         StartAnimation startAnimation = new StartAnimation();
-        //startAnimation.mostrar();
+        startAnimation.mostrar();
 
         // Mostrar el Menu del juego
         Menu menu = new utils.Menu();

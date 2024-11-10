@@ -3,7 +3,7 @@ package utils;
 public class StartAnimation {
 
     public void mostrar() throws InterruptedException {
-        String[] logo = new String[24];
+        String[] logo = new String[23];
 
         // Carga manual del logo para la animación
         logo[0] = "      8 888888888o           .8.    8888888 8888888888    .8.          8 8888         8 8888                  .8.";
