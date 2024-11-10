@@ -1,6 +1,3 @@
-/New Folder/ExperimentoTimer/nbproject/private/
-/New Folder/ExperimentoTimer/build/
-
 # NetBeans IDE files
 nbproject/private/
 nbbuild/
@@ -32,3 +29,7 @@ Thumbs.db      # Windows
 # User-specific files
 .idea/         # IntelliJ IDEA
 *.iml          # IntelliJ IDEA project files
+
+# Ignore specific files in the project
+Experimento1 celdas/build/built-jar.properties
+Experimento1 celdas/nbproject/private/private.properties

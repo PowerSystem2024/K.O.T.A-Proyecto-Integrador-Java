@@ -1,18 +1,22 @@
 package BatallaNaval;
 
 public class Sky extends Cell {
+    private static final String NAME = "Water";
+    private static final int LENGTH = 1;
+    private static final char CHARACTER = ' ';
+    
+    
+    public Sky() {
+        super(CHARACTER);
+    }
     @Override
     public String getDescription() {
-        return "Sky";
+        return NAME;
     }
 
     @Override
     public int getSpaceRequired() {
-        return 1; // Sky occupies one space
+        return LENGTH; // Sky occupies one space
     }
 
-    @Override
-    public char getCharacter() {
-        return ' '; // Represents the sky (could be a space or any other character)
-    }
 }
