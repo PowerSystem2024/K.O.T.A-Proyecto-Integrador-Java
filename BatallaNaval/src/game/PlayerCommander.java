@@ -25,11 +25,13 @@ public class PlayerCommander extends Commander {
 
         // Iteramos sobre los barcos
         for (Boat boat : boats) {
+            CleanScreen.clearScreen();
             boolean placed = false;  // Variable para verificar si el barco fue colocado correctamente
             while (!placed) {                
-                board.displayBothBoards(board, board);
+                //board.displayBothBoards(board, board);
                 int [] Arraycoordinates = new int[2];
                 Arraycoordinates =  Coordinates(board, boat);
+                //CleanScreen.clearScreen();
                 int row = Arraycoordinates[0];
                 int col = Arraycoordinates[1];
                 
@@ -62,7 +64,7 @@ public class PlayerCommander extends Commander {
             System.out.printf("Enter the starting position (e.g., A1) for your %s: ", boat.getDescription());
             board.displayBothBoards(board, board);
             input = scanner.nextLine().toUpperCase();
-            
+            CleanScreen.clearScreen();
             // Verificamos si la entrada tiene el formato correcto
             if (input.length() >= 2) {
                 char rowChar = input.charAt(0);  // La letra es la fila
