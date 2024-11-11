@@ -2,8 +2,8 @@
 <launch4jConfig>
   <dontWrapJar>false</dontWrapJar>
   <headerType>console</headerType>
-  <jar>C:\Users\Mkjdf983\Documents\Tecnicatura\K.O.T.A-Proyecto-Integrador-Java\Experimento1 celdas\BatallaNavalJava.jar</jar>
-  <outfile>C:\Users\Mkjdf983\Documents\Tecnicatura\K.O.T.A-Proyecto-Integrador-Java\Ejecutable\BatallaNavalJava.exe</outfile>
+  <jar>C:\Users\Mkjdf983\Documents\Tecnicatura\K.O.T.A-Proyecto-Integrador-Java\BatallaNaval\BatallaNavalJava.jar</jar>
+  <outfile>C:\Users\Mkjdf983\Documents\Tecnicatura\K.O.T.A-Proyecto-Integrador-Java\Ejecutable\BatallaNaval.exe</outfile>
   <errTitle></errTitle>
   <cmdLine></cmdLine>
   <chdir>.</chdir>
@@ -11,7 +11,7 @@
   <downloadUrl></downloadUrl>
   <supportUrl></supportUrl>
   <stayAlive>false</stayAlive>
-  <restartOnCrash>true</restartOnCrash>
+  <restartOnCrash>false</restartOnCrash>
   <manifest></manifest>
   <icon></icon>
   <jre>
