@@ -17,8 +17,8 @@ public class MainGame {
         scanner.nextLine();
 
         // Iniciar la animación
-        //StartAnimation startAnimation = new StartAnimation();
-        //startAnimation.mostrar();
+        StartAnimation startAnimation = new StartAnimation();
+        startAnimation.mostrar();
         // Mostrar el Menu del juego
         Menu menu = new utils.Menu();
         menu.showMenu();

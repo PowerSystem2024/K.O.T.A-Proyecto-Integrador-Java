@@ -1,7 +1,7 @@
 package BatallaNaval;
 
 public class Sky extends Cell {
-    private static final String NAME = "Water";
+    private static final String NAME = "Sky";
     private static final int LENGTH = 1;
     private static final char CHARACTER = ' ';
     
